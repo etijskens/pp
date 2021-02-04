@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Development environment &mdash; et_micc 1.0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently asked questions" href="faq.html" />
+    <link rel="prev" title="API" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> et_micc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Micc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Applications (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#principles">Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-local-development-environment-step-by-step">Setting up your local Development environment - step by step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-cluster-development-environment-step-by-step">Setting up your cluster Development environment - step by step</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#productivity-tip">Productivity tip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Interesting links on Python programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">et_micc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Development environment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/devenv.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="development-environment">
+<span id="id1"></span><h1>Development environment<a class="headerlink" href="#development-environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="principles">
+<h2>Principles<a class="headerlink" href="#principles" title="Permalink to this headline">¶</a></h2>
+<p>This document aims at setting up a practical development environment for Python projects,
+allowing the integration of binary extension modules based on C++ or Fortran.
+Developing on a local machine, a desktop or a laptop, is often somewhat more practical than
+developing on the cluster. Typically, I start developing on my own machine until things are
+working well, and then I port the code to the cluster for further testing. I switch back and
+forth between both environments several times.</p>
+<p>There are important differences in managing your environment on your local machine and on the
+cluster. They are described in detail in <a class="reference internal" href="tutorials.html#tutorial-6"><span class="std std-ref">Tutorial 6 - Using micc projects on the VSC clusters</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference external" href="https://github.com/etijskens/et-micc">Micc</a> was designed for supporting HPC
+developers, and, consequentially, with Linux systems in mind. We provide support for Linux
+(Ubuntu 19.10, CentOS 7.7), and macOS. Due to lack of human resources, it has not been
+tested on Windows, and no support is provided for it. However,
+<a class="reference external" href="https://pbpython.com/wsl-python.html">WSL-2</a> may do the trick on Windows.</p>
+</div>
+<p>For Python development on your local machine, we highly recommend to set up your development
+environment as described in
+<a class="reference external" href="https://jacobian.org/2019/nov/11/python-environment-2020/">My Python Development Environment</a>
+by Jacob Kaplan-Moss. We will assume that this is indeed the case for all tutorials here. In
+particular:</p>
+<ul class="simple">
+<li><p>We use <a class="reference external" href="https://github.com/pyenv/pyenv">pyenv</a> to manage different Python versions on
+our system.</p></li>
+<li><p><a class="reference external" href="https://github.com/pipxproject/pipx/">Pipx</a> is used to install Python applications
+system-wide. If your projects depend on different Python versions it is a good idea to
+<code class="docutils literal notranslate"><span class="pre">pipx</span> <span class="pre">install</span></code> <a class="reference external" href="https://github.com/etijskens/et-micc">Micc</a>, which we use for project management and and building binary extension
+modules.</p></li>
+<li><p><a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">Poetry</a> is used to set up virtual environments for
+the projects we are working, for managing their dependencies and for publishing them.</p></li>
+<li><p>For building binary extension modules from C++ <a class="reference external" href="https://cmake.org">CMake</a> must be available.</p></li>
+<li><p>For <a class="reference external" href="https://github.com/etijskens/et-micc">Micc</a> projects with binary extension the necessary compilers (C++, Fortran) must be installed
+on the system.</p></li>
+<li><p>As an IDE for Python/Fortran/C++ development we recommend:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.eclipse.org/downloads/packages/release/photon/rc2/eclipse-ide-scientific-computing">Eclipse IDE for Scientific Computing</a>
+with the <a class="reference external" href="https://pydev.org">PyDev</a> plugin. This is an old time favorite of mine, although
+The learning curve is a bit steep and documentation could be better. Today, <a class="reference external" href="https://pydev.org">PyDev</a> is beginning
+to lag behind for Python, but Eclipse is still very good for Fortran and C++.</p></li>
+<li><p><a class="reference external" href="https://www.jetbrains.com/pycharm/download">PyCharm Community Edition</a>. I only tried this one
+recently and was very soon convinced for python development. (Didn’t go back to Eclipse once since
+then). I currently have insufficient experience for Fortran and C++ for making recommendations.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="setting-up-your-local-development-environment-step-by-step">
+<h2>Setting up your local Development environment - step by step<a class="headerlink" href="#setting-up-your-local-development-environment-step-by-step" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Install pyenv: See
+<a class="reference external" href="https://realpython.com/intro-to-pyenv/">Managing Multiple Python Versions With pyenv</a>
+for common install instructions on macos and Linux.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since Ubunty 20.10 the dependencies for <a class="reference external" href="https://github.com/pyenv/pyenv">pyenv</a> can best be installed as shown in
+<a class="reference external" href="https://github.com/asdf-vm/asdf/issues/570">https://github.com/asdf-vm/asdf/issues/570</a> . The realpython page above is not up
+to date.</p>
+</div>
+<p>If you’re on Windows, consider using the fork <a class="reference external" href="https://github.com/pyenv-win/pyenv-win">pyenv-win</a>.
+(Pyenv does not work on windows outside the Windows Subsystem for Linux).</p>
+</li>
+<li><p>Install your favourite Python versions. E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pyenv</span> <span class="n">install</span> <span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">poetry</a>. The <a class="reference external" href="https://python-poetry.org/docs/#installation">recommended way</a>
+for this is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">poetry</span><span class="o">/</span><span class="n">poetry</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">get</span><span class="o">-</span><span class="n">poetry</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">python</span>
+</pre></div>
+</div>
+<p>This approach will give you one single system-wide <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">Poetry</a> installation, which
+will automatically pick up the current Python version in your environment. Note,
+that as of <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">Poetry</a> 1.0.0, Poetry will also detect
+<a class="reference external" href="https://conda.io/projects/conda/en/latest/index.html">conda</a> virtual environments.</p>
+</li>
+<li><p>Configure your <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">poetry</a> installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    &gt; poetry config virtualenvs.in-project true
+
+This ensures that running ``poetry install`` in a project directory will create a
+project&#39;s virtual environment in its own root directory, rather than somewhere in
+the Poetry_ configuration directories, where it is less accessible. If you have
+several Poetry_ installations, they all use the same configuration.
+</pre></div>
+</div>
+</li>
+<li><p>Install <a class="reference external" href="https://github.com/pipxproject/pipx/">pipx</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">pipx</span>
+<span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pipx</span> <span class="n">ensurepath</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will use the Python version returned by <code class="docutils literal notranslate"><span class="pre">pyenv</span> <span class="pre">version</span></code>. <a class="reference external" href="https://github.com/etijskens/et-micc">Micc</a> is
+certainly comfortable with Python 3.7 and 3.8.</p>
+</div>
+</li>
+<li><p>Install <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> with pipx:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; pipx install et-micc
+  installed package et-micc 0.10.8, Python 3.8.0
+  These apps are now globally available
+    - micc
+done!
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> will be run under the Python version with which <a class="reference external" href="https://github.com/pipxproject/pipx/">pipx</a> was installed.</p>
+</div>
+<p>To upgrade <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> to the newest version run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pipx</span> <span class="n">upgrade</span> <span class="n">et</span><span class="o">-</span><span class="n">micc</span>
+</pre></div>
+</div>
+</li>
+<li><p>To upgrade to a newer version of a tool that you installed with <a class="reference external" href="https://github.com/pipxproject/pipx/">pipx</a>, use the <code class="docutils literal notranslate"><span class="pre">upgrade</span></code>
+command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pipx</span> <span class="n">upgrade</span> <span class="n">et</span><span class="o">-</span><span class="n">micc</span>
+<span class="n">et</span><span class="o">-</span><span class="n">micc</span> <span class="ow">is</span> <span class="n">already</span> <span class="n">at</span> <span class="n">latest</span> <span class="n">version</span> <span class="mf">0.10</span><span class="o">.</span><span class="mi">8</span> <span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="n">pipx</span><span class="o">/</span><span class="n">venvs</span><span class="o">/</span><span class="n">et</span><span class="o">-</span><span class="n">micc</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you want to develop binary extensions in Fortran or C++, you will need a Fortran compiler or a C++
+compiler, respectively. For C++ binary extensions, also CMake and make must be on your system PATH.
+You can download <a class="reference external" href="https://cmake.org">CMake</a> directly from <a class="reference external" href="https://cmake.org/download/">cmake.org</a>.</p>
+<p>If you are on one of the VSC clusters, check “Tutorial 7 - Using micc projects on the VSC clusters”.</p>
+</li>
+<li><p>Install an IDE. For many years I have been using <a class="reference external" href="https://www.eclipse.org/downloads/packages/release/photon/rc2/eclipse-ide-scientific-computing">Eclipse IDE for Scientific Computing</a>
+with the <a class="reference external" href="https://pydev.org">PyDev</a> plugin,  but recently I became addicted to
+<a class="reference external" href="https://www.jetbrains.com/pycharm/download">PyCharm Community Edition</a>. Both are available for MacOS, Linux and Windows.</p></li>
+<li><p>Create a git account at &lt;<a class="reference external" href="https://github.com">https://github.com</a>&gt;/join/.</p></li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">git</span></code> (<a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a>) and
+the github cli <code class="docutils literal notranslate"><span class="pre">gh</span></code> (<a class="reference external" href="https://github.com/cli/cli#installation">https://github.com/cli/cli#installation</a>).</p></li>
+<li><p>Create your first <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> project. The very first time, you will be asked to set some default
+values that identify you as a <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> user. Replace the preset values by your own preferences:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="o">-</span><span class="n">p</span> <span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">micc</span><span class="o">-</span><span class="n">project</span> <span class="n">create</span>
+<span class="n">your</span> <span class="n">full</span> <span class="n">name</span> <span class="p">[</span><span class="n">Engelbert</span> <span class="n">Tijskens</span><span class="p">]:</span> <span class="n">carl</span> <span class="n">morck</span>
+<span class="n">your</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="n">address</span> <span class="p">[</span><span class="n">engelbert</span><span class="o">.</span><span class="n">tijskens</span><span class="nd">@uantwerpen</span><span class="o">.</span><span class="n">be</span><span class="p">]:</span> <span class="n">carl</span><span class="o">.</span><span class="n">mork</span><span class="nd">@q</span><span class="o">-</span><span class="n">series</span><span class="o">.</span><span class="n">dk</span>
+<span class="n">your</span> <span class="n">github</span> <span class="n">username</span> <span class="p">(</span><span class="n">leave</span> <span class="n">empty</span> <span class="k">if</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span><span class="p">)</span> <span class="p">[</span><span class="n">etijskens</span><span class="p">]:</span> <span class="n">cmorck</span>
+<span class="n">the</span> <span class="n">initial</span> <span class="n">version</span> <span class="n">number</span> <span class="n">of</span> <span class="n">a</span> <span class="n">new</span> <span class="n">project</span> <span class="p">[</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">0</span><span class="p">]:</span>
+<span class="n">default</span> <span class="n">git</span> <span class="n">branch</span> <span class="p">[</span><span class="n">master</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>The last two entries are generally ok. If you later want to change the entries, you can simply
+edit the file <code class="file docutils literal notranslate"><span class="pre">~/.et_micc/micc.json</span></code>.</p>
+</li>
+</ol>
+<p>You should be good to go now.</p>
+</div>
+<div class="section" id="setting-up-your-cluster-development-environment-step-by-step">
+<h2>Setting up your cluster Development environment - step by step<a class="headerlink" href="#setting-up-your-cluster-development-environment-step-by-step" title="Permalink to this headline">¶</a></h2>
+<p>For details see <a class="reference internal" href="tutorials.html#tutorial-6"><span class="std std-ref">Tutorial 6 - Using micc projects on the VSC clusters</span></a></p>
+<ol class="arabic">
+<li><p>On the cluster you must select the software packages you want to use manually by
+loading modules with the <a class="reference external" href="https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/software/software_stack.html">module system</a>
+The module system provides access to the many pre-installed software packages - including Python
+versions - that are especially built for HPC purposes and optimal performance. They are generally,
+much more performant than if you would have built them yourself. It is, therefor, discouraged to
+install <a class="reference external" href="https://github.com/pipxproject/pipx/">pipx</a> to your own Python versions.</p></li>
+<li><p>Install <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">poetry</a>. The <a class="reference external" href="https://python-poetry.org/docs/#installation">recommended way</a>
+for this is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">poetry</span><span class="o">/</span><span class="n">poetry</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">get</span><span class="o">-</span><span class="n">poetry</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
+</pre></div>
+</div>
+<p>(Make sure to use the system Python  <code class="docutils literal notranslate"><span class="pre">/usr/bin/python</span></code> for this. Otherwise you will run into
+trouble selecting a Python version for your project.)
+This approach will give you one single system-wide <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">Poetry</a> installation, which
+will automatically pick up the current Python version in your environment.</p>
+</li>
+<li><p>Configure your <a class="reference external" href="https://poetry.eustace.io/docs/pyproject/">poetry</a> installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    &gt; poetry config virtualenvs.in-project true
+
+This ensures that running ``poetry install`` in a project directory will create a
+project&#39;s virtual environment in its own root directory, rather than somewhere in
+the Poetry_ configuration directories, where it is less accessible.
+</pre></div>
+</div>
+</li>
+<li><p>For <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> projects that are cloned from a git repository, we recommend install <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> as a
+development dependency of your project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">myproject</span>
+<span class="o">&gt;</span> <span class="n">poetry</span> <span class="n">add</span> <span class="o">--</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>If you want to create a new project with <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a>, you must install it first of course:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">module</span> <span class="n">load</span> <span class="n">Python</span>         <span class="c1"># load your favourite Python module</span>
+<span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">et</span><span class="o">-</span><span class="n">micc</span>
+</pre></div>
+</div>
+<p>Without the <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag <a class="reference external" href="https://pypi.org/project/pip/">pip</a> would try to install in the cluster module, where you
+to not have access. The flag instructs <a class="reference external" href="https://pypi.org/project/pip/">pip</a> to install in your home directory.</p>
+</li>
+<li><p>If you want to develop binary extensions in Fortran or C++, you will need a Fortran compiler
+and/or a C++ compiler, respectively. In general, loading a Python module on the cluster,
+automatically also makes the compilers available that were used to compile the Python version.</p>
+<p>For C++ binary extensions, also <a class="reference external" href="https://cmake.org">CMake</a> must be on your system PATH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">module</span> <span class="n">load</span> <span class="n">CMake</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you need a full IDE, you must use one of the graphical environments on the cluster
+(see <a class="reference external" href="https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/access_and_data_transfer.html#gui-applications-on-the-clusters">https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/access_and_data_transfer.html#gui-applications-on-the-clusters</a>)
+Unfortunately, there are different gui environments for the different VSC clusters.
+If you only want a graphical editor, you can use Eclipse Remote system explorer as a
+remote editor.</p></li>
+<li><p>Get a git account at <a class="reference external" href="https://github.com">github</a>, install git if is is not pre-installed
+on your system, and configure it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">module</span> <span class="n">load</span> <span class="n">git</span>                                   <span class="c1"># for a more recent git version</span>
+<span class="o">&gt;</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;you@example.com&quot;</span>
+<span class="o">&gt;</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;Your Name&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create your first <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> project. The very first time, y ou will be asked to set some default
+values that identify you as a <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> user. Replace the preset values by your own preferences:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="o">-</span><span class="n">p</span> <span class="n">my</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">micc</span><span class="o">-</span><span class="n">project</span> <span class="n">create</span>
+<span class="n">your</span> <span class="n">full</span> <span class="n">name</span> <span class="p">[</span><span class="n">Engelbert</span> <span class="n">Tijskens</span><span class="p">]:</span> <span class="n">carl</span> <span class="n">morck</span>
+<span class="n">your</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="n">address</span> <span class="p">[</span><span class="n">engelbert</span><span class="o">.</span><span class="n">tijskens</span><span class="nd">@uantwerpen</span><span class="o">.</span><span class="n">be</span><span class="p">]:</span> <span class="n">carl</span><span class="o">.</span><span class="n">mork</span><span class="nd">@q</span><span class="o">-</span><span class="n">series</span><span class="o">.</span><span class="n">dk</span>
+<span class="n">your</span> <span class="n">github</span> <span class="n">username</span> <span class="p">(</span><span class="n">leave</span> <span class="n">empty</span> <span class="k">if</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span><span class="p">)</span> <span class="p">[</span><span class="n">etijskens</span><span class="p">]:</span> <span class="n">cmorck</span>
+<span class="n">the</span> <span class="n">initial</span> <span class="n">version</span> <span class="n">number</span> <span class="n">of</span> <span class="n">a</span> <span class="n">new</span> <span class="n">project</span> <span class="p">[</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">0</span><span class="p">]:</span>
+<span class="n">default</span> <span class="n">git</span> <span class="n">branch</span> <span class="p">[</span><span class="n">master</span><span class="p">]:</span>
+</pre></div>
+</div>
+<p>The last two entries are generally ok. If you later want to change the entries, you can simply
+edit the file <code class="file docutils literal notranslate"><span class="pre">~/.et_micc/micc.json</span></code>.</p>
+</li>
+</ol>
+<p>You should be good to go now.</p>
+<div class="section" id="productivity-tip">
+<h3>Productivity tip<a class="headerlink" href="#productivity-tip" title="Permalink to this headline">¶</a></h3>
+<p>Create a bash script to set the environment for your project consistently over time, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">git</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">CMake</span>
+<span class="c1"># load my favourite python:</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">Python</span>
+<span class="n">cd</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">myproject</span>
+<span class="c1"># activate myproject&#39;s virtual environment:</span>
+<span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="faq.html" class="btn btn-neutral float-right" title="Frequently asked questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Engelbert Tijskens
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

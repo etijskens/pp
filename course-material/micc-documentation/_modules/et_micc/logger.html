@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>et_micc.logger &mdash; et_micc 1.0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> et_micc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Micc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps.html">Applications (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devenv.html">Development environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../links.html">Interesting links on Python programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">et_micc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>et_micc.logger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for et_micc.logger</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module et_micc.logger</span>
+<span class="sd">=====================</span>
+
+<span class="sd">Helper functions for logging.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">import</span> <span class="nn">logging</span> 
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<div class="viewcode-block" id="verbosity_to_loglevel"><a class="viewcode-back" href="../../api.html#et_micc.logger.verbosity_to_loglevel">[docs]</a><span class="k">def</span> <span class="nf">verbosity_to_loglevel</span><span class="p">(</span><span class="n">verbosity</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tranlate :py:obj:`verbosity` into a loglevel.</span>
+<span class="sd">    </span>
+<span class="sd">    :param int verbosity:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">verbosity</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span>
+    <span class="k">elif</span> <span class="n">verbosity</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span></div>
+
+
+<span class="c1"># # Use static vare to implement a singleton (the micc_logger)</span>
+<span class="c1"># @static_vars(the_logger=None)</span>
+<span class="c1"># def get_micc_logger(global_options=None):</span>
+<span class="c1">#     &quot;&quot;&quot;Set up and store a et_micc logger that writes to the console (taking verbosity</span>
+<span class="c1">#     into account) and to a log file ``et_micc.log``.</span>
+<span class="c1">#</span>
+<span class="c1">#     :param types.SimpleNamespace global_options: namespace object with options</span>
+<span class="c1">#         accepted by (almost) all et_micc commands. If None, the static :py:obj:`the_logger`</span>
+<span class="c1">#         is returned.</span>
+<span class="c1">#     :returns: a Logger object.</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#     # if global_options is None:</span>
+<span class="c1">#     #     if get_micc_logger.the_logger is None:</span>
+<span class="c1">#     #         raise RuntimeError(&quot;Micc logger not created yet - this is a bug.&quot;)</span>
+<span class="c1">#     #     return get_micc_logger.the_logger</span>
+<span class="c1">#</span>
+<span class="c1">#     if not get_micc_logger.the_logger is None:</span>
+<span class="c1">#         # verify that the current logger is for the current project directory</span>
+<span class="c1">#         # (When running pytest, et_micc commands are run in several different</span>
+<span class="c1">#         # project directories created on the fly. the micc_logger must adjust</span>
+<span class="c1">#         # to this situation and log to a et_micc.log file in the project directory.</span>
+<span class="c1">#         current_logfile = get_micc_logger.the_logger.logfile</span>
+<span class="c1">#         current_project_path = global_options.project_path</span>
+<span class="c1">#         if not current_logfile.parent == current_project_path:</span>
+<span class="c1">#             get_micc_logger.the_logger = None</span>
+<span class="c1">#</span>
+<span class="c1">#     if get_micc_logger.the_logger is None:</span>
+<span class="c1">#</span>
+<span class="c1">#         if getattr(global_options,&#39;clear_log&#39;,False):</span>
+<span class="c1">#             logfile = global_options.project_path / &#39;et_micc.log&#39;</span>
+<span class="c1">#             if logfile.exists():</span>
+<span class="c1">#                 logfile.unlink()</span>
+<span class="c1">#             else:</span>
+<span class="c1">#                 global_options.clear_log = False</span>
+<span class="c1">#</span>
+<span class="c1">#         # create a new logger object that will write to et_micc.log</span>
+<span class="c1">#         # in the current project directory</span>
+<span class="c1">#         p = global_options.project_path / &#39;et_micc.log&#39;</span>
+<span class="c1">#         get_micc_logger.the_logger = create_logger(p)</span>
+<span class="c1">#         get_micc_logger.the_logger.logfile = p</span>
+<span class="c1">#         if global_options.verbosity&gt;2:</span>
+<span class="c1">#             print(f&quot;micc_logger.logfile = {get_micc_logger.the_logger.logfile}&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#     # set the log level from the verbosity</span>
+<span class="c1">#     get_micc_logger.the_logger.console_handler.setLevel(verbosity_to_loglevel(global_options.verbosity))</span>
+<span class="c1">#</span>
+<span class="c1">#     if getattr(global_options,&#39;clear_log&#39;,False):</span>
+<span class="c1">#         global_options.clear_log = False</span>
+<span class="c1">#         get_micc_logger.the_logger.debug(&quot;The log file was cleared.&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#     return get_micc_logger.the_logger</span>
+<span class="c1">#</span>
+
+<div class="viewcode-block" id="IndentingLogger"><a class="viewcode-back" href="../../api.html#et_micc.logger.IndentingLogger">[docs]</a><span class="k">class</span> <span class="nc">IndentingLogger</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Cuastom Logger class for creating indented logs.</span>
+<span class="sd">    </span>
+<span class="sd">    This is the class for the et_micc logger.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">NOTSET</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stack</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        
+    <span class="k">def</span> <span class="nf">_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stack_info</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overloaded functon from logging.Logger&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="c1"># ensure that the indentation is independent of the lenght of the levelname.</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">getLevelName</span><span class="p">(</span><span class="n">level</span><span class="p">)))</span> <span class="o">*</span> <span class="s1">&#39; &#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span> <span class="o">+</span> <span class="n">msg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">exc_info</span><span class="p">,</span> <span class="n">extra</span><span class="p">)</span>
+        
+            
+<div class="viewcode-block" id="IndentingLogger.indent"><a class="viewcode-back" href="../../api.html#et_micc.logger.IndentingLogger.indent">[docs]</a>    <span class="k">def</span> <span class="nf">indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Increase the indentation level.</span>
+<span class="sd">        </span>
+<span class="sd">        Future log messages will shift to the right by n spaces.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span> <span class="o">+=</span> <span class="n">n</span><span class="o">*</span><span class="s1">&#39; &#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+        
+            
+<div class="viewcode-block" id="IndentingLogger.dedent"><a class="viewcode-back" href="../../api.html#et_micc.logger.IndentingLogger.dedent">[docs]</a>    <span class="k">def</span> <span class="nf">dedent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Increase the indentation level.</span>
+<span class="sd">        </span>
+<span class="sd">        Future log messages will shift to the left. The width of the shift</span>
+<span class="sd">        is determined by the last call to :py:meth:`~et_micc.logger.IndentingLogger.indent`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stack</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indent</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="create_logger"><a class="viewcode-back" href="../../api.html#et_micc.logger.create_logger">[docs]</a><span class="k">def</span> <span class="nf">create_logger</span><span class="p">(</span><span class="n">path_to_log_file</span><span class="p">,</span><span class="n">filemode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create a logger object for et_micc.</span>
+<span class="sd">    </span>
+<span class="sd">    It will log to:</span>
+<span class="sd">    </span>
+<span class="sd">    * the console</span>
+<span class="sd">    * file *path_to_log_file*. By default log message will be appended to the</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># create formatters and add it to the handlers</span>
+    <span class="n">format_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[%(levelname)s] %(message)s&quot;</span>
+    <span class="n">console_formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">format_string</span><span class="p">)</span>
+    <span class="n">logfile_formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">format_string</span><span class="p">)</span>
+
+    <span class="c1"># create and add a console handler </span>
+    <span class="n">console_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+    <span class="n">console_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">console_formatter</span><span class="p">)</span>
+    <span class="n">console_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># create and add a logfile handler</span>
+    <span class="n">logfile_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">path_to_log_file</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="n">filemode</span><span class="p">)</span>
+    <span class="n">logfile_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logfile_formatter</span><span class="p">)</span> 
+    <span class="n">logfile_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+            
+    <span class="c1"># set custom logger class</span>
+    <span class="c1"># logging.setLoggerClass(IndentingLogger)</span>
+
+    <span class="c1"># create logger</span>
+    <span class="c1"># logger = logging.getLogger(path_to_log_file.name)</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">IndentingLogger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ok&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logfile_handler</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">console_handler</span><span class="p">)</span>
+    
+    <span class="c1"># add the handlers as a member, so we can still modify them on the fly.</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">logfile_handler</span> <span class="o">=</span> <span class="n">logfile_handler</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">console_handler</span> <span class="o">=</span> <span class="n">console_handler</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">log_file</span> <span class="o">=</span> <span class="n">path_to_log_file</span>
+    <span class="k">return</span> <span class="n">logger</span></div>
+
+
+<div class="viewcode-block" id="log"><a class="viewcode-back" href="../../api.html#et_micc.logger.log">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">logfun</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="s1">&#39;doing&#39;</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="s1">&#39;done.&#39;</span><span class="p">,</span><span class="n">bracket</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Print a message before and after executing the body of the contextmanager.</span>
+
+<span class="sd">    :param callable logfun: a function that can print a log message, e.g. :py:meth:`print`, :py:meth:`~et_micc.logger.get_micc_logger.the_logger.info`. </span>
+<span class="sd">    :param str before: print this before body is executed</span>
+<span class="sd">    :param str after: print this after body is executed</span>
+<span class="sd">    :param bool bracket: append &#39; [&#39; to before and prepend &#39;] &#39; to after.</span>
+<span class="sd">    </span>
+<span class="sd">    This works best with the :py:class:`~et_micc.logger.IndentingLogger`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">logfun</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">bracket</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;[ &#39;</span> <span class="o">+</span> <span class="n">before</span>
+        <span class="n">logfun</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logfun</span><span class="o">.</span><span class="vm">__self__</span><span class="o">.</span><span class="n">indent</span><span class="p">()</span>
+            <span class="n">is_logger</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">is_logger</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">yield</span>
+    <span class="k">if</span> <span class="n">logfun</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_logger</span><span class="p">:</span>
+            <span class="n">logfun</span><span class="o">.</span><span class="vm">__self__</span><span class="o">.</span><span class="n">dedent</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">bracket</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;] &#39;</span><span class="o">+</span> <span class="n">after</span>
+        <span class="n">logfun</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="logtime"><a class="viewcode-back" href="../../api.html#et_micc.logger.logtime">[docs]</a><span class="nd">@contextmanager</span>
+<span class="k">def</span> <span class="nf">logtime</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Log start time, end time and duration of the task in the body of the context manager</span>
+<span class="sd">    to the et_micc logger.</span>
+<span class="sd">    </span>
+<span class="sd">    This logs on debug level. To see in in the console output you must pass ``-vv`` to et_micc.</span>
+<span class="sd">    </span>
+<span class="sd">    :param SimpleNameSpace global_options: pass verbosity to the et_micc logger.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">project</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logfun</span> <span class="o">=</span> <span class="nb">print</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logfun</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">logfun</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;start = </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logfun</span><span class="o">.</span><span class="vm">__self__</span><span class="o">.</span><span class="n">indent</span><span class="p">()</span>
+
+    <span class="k">yield</span>
+    <span class="n">logfun</span><span class="o">.</span><span class="vm">__self__</span><span class="o">.</span><span class="n">dedent</span><span class="p">()</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">logfun</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stop  = </span><span class="si">{</span><span class="n">stop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">spent</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">logfun</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;spent = </span><span class="si">{</span><span class="n">spent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+    
+
+<span class="c1">#eof</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Engelbert Tijskens
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

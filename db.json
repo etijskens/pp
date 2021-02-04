@@ -1,0 +1,40 @@
+{
+  "pp": {
+    "options": {
+      "verbosity": 1,
+      "project_path": "/Users/etijskens/software/dev/workspace/pp",
+      "default_project_path": true,
+      "clear_log": false,
+      "template_parameters": {
+        "project_name": "pp",
+        "package_name": "pp",
+        "full_name": "Engelbert Tijskens",
+        "email": "engelbert.tijskens@uantwerpen.be",
+        "github_username": "etijskens",
+        "version": "0.0.0",
+        "github_repo": "{{ cookiecutter.project_name }}",
+        "default_branch": "master",
+        "python_version": "3.7",
+        "sphinx_html_theme": "sphinx_rtd_theme",
+        "open_source_license": "MIT license",
+        "py": "py",
+        "project_short_description": "<Enter a one-sentence description of this project here.>",
+        "app_name": "pp",
+        "cli_app_name": "cli_pp"
+      },
+      "add_name": "pp",
+      "app": true,
+      "group": true,
+      "py": false,
+      "package": false,
+      "f90": false,
+      "cpp": false,
+      "templates": "app-sub-commands",
+      "overwrite": false,
+      "backup": false
+    },
+    "APPS.rst": ".. click:: pp.cli_pp:main\n   :prog: pp\n   :show-nested:\n\n",
+    "pyproject.toml": "pp = \"refactoring_dev:cli_pp.main\"\n",
+    "pp/__init__.py": "import pp.cli_pp\n"
+  }
+}

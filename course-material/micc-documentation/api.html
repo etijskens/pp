@@ -1,0 +1,885 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; et_micc 1.0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Development environment" href="devenv.html" />
+    <link rel="prev" title="Applications (CLI)" href="apps.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> et_micc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Micc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Applications (CLI)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package-et-micc">Package et-micc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-et-micc-project">Module et_micc.project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-et-micc-expand">Module et_micc.expand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-et-micc-logger">Module et_micc.logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-et-micc-utils">Module et_micc.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-et-micc-tomlfile">Module et_micc.tomlfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-et-micc-static-vars">Module et_micc.static_vars</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="devenv.html">Development environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Interesting links on Python programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">et_micc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-et_micc">
+<span id="api"></span><h1>API<a class="headerlink" href="#module-et_micc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="package-et-micc">
+<h2>Package et-micc<a class="headerlink" href="#package-et-micc" title="Permalink to this headline">¶</a></h2>
+<p>Top-level package for <code class="xref py py-mod docutils literal notranslate"><span class="pre">et-micc</span></code>.</p>
+</div>
+<span class="target" id="module-et_micc.project"></span><div class="section" id="module-et-micc-project">
+<h2>Module et_micc.project<a class="headerlink" href="#module-et-micc-project" title="Permalink to this headline">¶</a></h2>
+<p>An OO interface to <em>micc</em> projects.</p>
+<dl class="py class">
+<dt id="et_micc.project.Project">
+<em class="property">class </em><code class="sig-prename descclassname">et_micc.project.</code><code class="sig-name descname">Project</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project" title="Permalink to this definition">¶</a></dt>
+<dd><p>An OO interface to <em>micc</em> projects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>options</strong> (<em>types.SimpleNameSpace</em>) – all options from the <code class="docutils literal notranslate"><span class="pre">micc</span></code> CLI.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="et_micc.project.Project.add_app">
+<code class="sig-name descname">add_app</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_entry</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a console script (app, aka CLI) to the package.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.add_auto_build_code">
+<code class="sig-name descname">add_auto_build_code</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_entry</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_auto_build_code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_auto_build_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add auto build code for binary extension modules in <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> of the package.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.add_cmd">
+<code class="sig-name descname">add_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add some source file to the project.</p>
+<p>This method dispatches to</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#et_micc.project.Project.add_app" title="et_micc.project.Project.add_app"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_app()</span></code></a>,</p></li>
+<li><p><a class="reference internal" href="#et_micc.project.Project.add_python_module" title="et_micc.project.Project.add_python_module"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_python_module()</span></code></a>,</p></li>
+<li><p><a class="reference internal" href="#et_micc.project.Project.add_f90_module" title="et_micc.project.Project.add_f90_module"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_f90_module()</span></code></a>,</p></li>
+<li><p><a class="reference internal" href="#et_micc.project.Project.add_cpp_module" title="et_micc.project.Project.add_cpp_module"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_cpp_module()</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.add_cpp_module">
+<code class="sig-name descname">add_cpp_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_entry</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_cpp_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_cpp_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a cpp module to this project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.add_dependencies">
+<code class="sig-name descname">add_dependencies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">deps</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_dependencies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add dependencies to the <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deps</strong> (<em>dict</em>) – (package,version_constraint) pairs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.add_f90_module">
+<code class="sig-name descname">add_f90_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_entry</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_f90_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_f90_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a f90 module to this project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.add_python_module">
+<code class="sig-name descname">add_python_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_entry</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.add_python_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.add_python_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a python sub-module or sub-package to this project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.app_exists">
+<code class="sig-name descname">app_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.app_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.app_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if there is already an app with name <code class="docutils literal notranslate"><span class="pre">app_name</span></code> in this project.</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">&lt;package_name&gt;/cli_&lt;app_name&gt;.py</span></code></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>app_name</strong> (<em>str</em>) – app name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.cpp_module_exists">
+<code class="sig-name descname">cpp_module_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.cpp_module_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.cpp_module_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if there is already a cpp module with name py:obj:<cite>module_name</cite> in this project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_name</strong> (<em>str</em>) – module name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.create">
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new project skeleton.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.deserialize_db">
+<code class="sig-name descname">deserialize_db</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.deserialize_db"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.deserialize_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read file <code class="docutils literal notranslate"><span class="pre">db.json</span></code> into self.db.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.error">
+<code class="sig-name descname">error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print an error message <code class="xref py py-obj docutils literal notranslate"><span class="pre">msg</span></code> and set the project’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">exit_code</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.f90_module_exists">
+<code class="sig-name descname">f90_module_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.f90_module_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.f90_module_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if there is already a f90 module with name py:obj:<cite>module_name</cite> in this project.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_name</strong> (<em>str</em>) – module name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.info_cmd">
+<code class="sig-name descname">info_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.info_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.info_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output info on the project.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.module_exists">
+<code class="sig-name descname">module_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.module_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.module_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if there is already a module with name py:obj:<cite>module_name</cite> in this project.</p>
+<p>This can be either a Python module, package, or a binary extension module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_name</strong> (<em>str</em>) – module name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.module_to_package">
+<code class="sig-name descname">module_to_package</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_py</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.module_to_package"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.module_to_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move file <code class="file docutils literal notranslate"><span class="pre">module.py</span></code> to <code class="file docutils literal notranslate"><span class="pre">module/__init__.py</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_py</strong> (<em>str|Path</em>) – path to module.py</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.module_to_package_cmd">
+<code class="sig-name descname">module_to_package_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.module_to_package_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.module_to_package_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a module project (<code class="file docutils literal notranslate"><span class="pre">module.py</span></code>) to a package project (<code class="file docutils literal notranslate"><span class="pre">package/__init__.py</span></code>).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.mv_component">
+<code class="sig-name descname">mv_component</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.mv_component"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.mv_component" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename or Remove a component (sub-module, sub-package, Fortran module, C++ module, app (CLI).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.py_module_exists">
+<code class="sig-name descname">py_module_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.py_module_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.py_module_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if there is already a python module with name <code class="xref py py-obj docutils literal notranslate"><span class="pre">module_name</span></code>
+in the project at <code class="file docutils literal notranslate"><span class="pre">project_path</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_name</strong> (<em>str</em>) – module name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.py_package_exists">
+<code class="sig-name descname">py_package_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.py_package_exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.py_package_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if there is already a python package with name <code class="xref py py-obj docutils literal notranslate"><span class="pre">module_name</span></code>
+in the project at <code class="file docutils literal notranslate"><span class="pre">project_path</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module_name</strong> (<em>str</em>) – module name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.replace_in_file">
+<code class="sig-name descname">replace_in_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">cur_name</span></em>, <em class="sig-param"><span class="n">new_name</span></em>, <em class="sig-param"><span class="n">contents_only</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.replace_in_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.replace_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace &lt;cur_name&gt; with &lt;new_name&gt; in the filename and its contents.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.serialize_db">
+<code class="sig-name descname">serialize_db</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">db_entry</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.serialize_db"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.serialize_db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write self.db to file <code class="docutils literal notranslate"><span class="pre">db.json</span></code>.</p>
+<p>Self.options is a SimpleNamespace object which is not default json serializable.
+This function takes care of that by converting to <code class="docutils literal notranslate"><span class="pre">str</span></code> where possible, and
+ignoring objects that do not need serialization, as e.g. self.options.logger.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.tag_cmd">
+<code class="sig-name descname">tag_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.tag_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.tag_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and push a version tag <code class="docutils literal notranslate"><span class="pre">v&lt;Major&gt;.&lt;minor&gt;.&lt;patch&gt;</span></code> for the current version.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.version_cmd">
+<code class="sig-name descname">version_cmd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.version_cmd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.version_cmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bump the version according to <code class="xref py py-obj docutils literal notranslate"><span class="pre">self.options.rule</span></code> or show the
+current version if no rule is specified.</p>
+<p>The version is stored in pyproject.toml in the project directory, and in
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">__version__</span></code> variable of the top-level package, which is either
+in <code class="file docutils literal notranslate"><span class="pre">&lt;package_name&gt;.py</span></code>, <code class="file docutils literal notranslate"><span class="pre">&lt;package_name&gt;/__init__.py</span></code>, or in
+<code class="file docutils literal notranslate"><span class="pre">&lt;package_name&gt;/__version__.py</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.project.Project.warning">
+<code class="sig-name descname">warning</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/project.html#Project.warning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.project.Project.warning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print an warning message <code class="xref py py-obj docutils literal notranslate"><span class="pre">msg</span></code> and set the project’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">exit_code</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-et_micc.expand"></span><div class="section" id="module-et-micc-expand">
+<h2>Module et_micc.expand<a class="headerlink" href="#module-et-micc-expand" title="Permalink to this headline">¶</a></h2>
+<p>Helper functions for dealing with <em>Cookiecutter</em> templates.</p>
+<dl class="py function">
+<dt id="et_micc.expand.expand_templates">
+<code class="sig-prename descclassname">et_micc.expand.</code><code class="sig-name descname">expand_templates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/expand.html#expand_templates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.expand.expand_templates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expand a list of cookiecutter <code class="xref py py-obj docutils literal notranslate"><span class="pre">templates</span></code> in directory <code class="xref py py-obj docutils literal notranslate"><span class="pre">project_path</span></code>.</p>
+<p>Expanding templates may require overwriting pre-existing files. <em>Micc</em> handles this
+situation in different ways:</p>
+<ul class="simple">
+<li><p>If <code class="xref py py-obj docutils literal notranslate"><span class="pre">options.overwrite</span></code> equals <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code> the exansion will
+fail without overwriting any pre-existing files. The project is not modified. A
+warning is produced. This is the default. To continue, rerun the command with one
+of the two options below.</p></li>
+<li><p>If <code class="xref py py-obj docutils literal notranslate"><span class="pre">options.overwrite</span></code> equals <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> the exansion will
+overwrite any pre-existing files without backup, and produce a warning, listing
+the overwritten files.</p></li>
+<li><p>If <code class="xref py py-obj docutils literal notranslate"><span class="pre">options.backup</span></code> equals <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> pre-existing files
+will be backed up (.bak) before the new files are expanded. If anything went
+wrong, you can inspect the backup files, and correct the errors manually.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>options</strong> (<em>types.SimpleNamespace</em>) – <p>namespace object with
+options accepted by et_micc commands. Relevant attributes are</p>
+<ul class="simple">
+<li><p>templates: ordered list of (paths to) cookiecutter templates that 
+will be expanded as they appear. The template parameters are propagated 
+from each template to the next.</p></li>
+<li><p><strong>verbosity</strong></p></li>
+<li><p><strong>project_path</strong>: Path to the project on which the command operates.</p></li>
+<li><p><strong>template_parameters</strong>: extra template parameters not read from <em>micc_file</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.expand.get_preferences">
+<code class="sig-prename descclassname">et_micc.expand.</code><code class="sig-name descname">get_preferences</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">micc_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/expand.html#get_preferences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.expand.get_preferences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the preferences from <em>micc_file</em>.</p>
+<p>(This function requires user interaction if no <em>micc_file</em> was provided!)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>micc_file</strong> (<em>Path</em>) – path to a json file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.expand.get_template_parameters">
+<code class="sig-prename descclassname">et_micc.expand.</code><code class="sig-name descname">get_template_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">preferences</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/expand.html#get_template_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.expand.get_template_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the template parameters from the preferences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>preferenes</strong> (<em>dict|Path</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict of (parameter name,parameter value) pairs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.expand.resolve_template">
+<code class="sig-prename descclassname">et_micc.expand.</code><code class="sig-name descname">resolve_template</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/expand.html#resolve_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.expand.resolve_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compose the absolute path of a template.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.expand.set_preferences">
+<code class="sig-prename descclassname">et_micc.expand.</code><code class="sig-name descname">set_preferences</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">micc_file</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/expand.html#set_preferences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.expand.set_preferences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the preferences in <em>micc_file</em>.</p>
+<p>(This function requires user interaction!)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>micc_file</strong> (<em>Path</em>) – path to a json file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-et_micc.logger"></span><div class="section" id="module-et-micc-logger">
+<h2>Module et_micc.logger<a class="headerlink" href="#module-et-micc-logger" title="Permalink to this headline">¶</a></h2>
+<p>Helper functions for logging.</p>
+<dl class="py class">
+<dt id="et_micc.logger.IndentingLogger">
+<em class="property">class </em><code class="sig-prename descclassname">et_micc.logger.</code><code class="sig-name descname">IndentingLogger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">level</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#IndentingLogger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.IndentingLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cuastom Logger class for creating indented logs.</p>
+<p>This is the class for the et_micc logger.</p>
+<dl class="py method">
+<dt id="et_micc.logger.IndentingLogger.dedent">
+<code class="sig-name descname">dedent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#IndentingLogger.dedent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.IndentingLogger.dedent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the indentation level.</p>
+<p>Future log messages will shift to the left. The width of the shift
+is determined by the last call to <a class="reference internal" href="#et_micc.logger.IndentingLogger.indent" title="et_micc.logger.IndentingLogger.indent"><code class="xref py py-meth docutils literal notranslate"><span class="pre">indent()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.logger.IndentingLogger.indent">
+<code class="sig-name descname">indent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#IndentingLogger.indent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.IndentingLogger.indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the indentation level.</p>
+<p>Future log messages will shift to the right by n spaces.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.logger.create_logger">
+<code class="sig-prename descclassname">et_micc.logger.</code><code class="sig-name descname">create_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_to_log_file</span></em>, <em class="sig-param"><span class="n">filemode</span><span class="o">=</span><span class="default_value">'a'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#create_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.create_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a logger object for et_micc.</p>
+<p>It will log to:</p>
+<ul class="simple">
+<li><p>the console</p></li>
+<li><p>file <em>path_to_log_file</em>. By default log message will be appended to the</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.logger.log">
+<code class="sig-prename descclassname">et_micc.logger.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logfun</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">before</span><span class="o">=</span><span class="default_value">'doing'</span></em>, <em class="sig-param"><span class="n">after</span><span class="o">=</span><span class="default_value">'done.'</span></em>, <em class="sig-param"><span class="n">bracket</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a message before and after executing the body of the contextmanager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logfun</strong> (<em>callable</em>) – a function that can print a log message, e.g. <code class="xref py py-meth docutils literal notranslate"><span class="pre">print()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">info()</span></code>.</p></li>
+<li><p><strong>before</strong> (<em>str</em>) – print this before body is executed</p></li>
+<li><p><strong>after</strong> (<em>str</em>) – print this after body is executed</p></li>
+<li><p><strong>bracket</strong> (<em>bool</em>) – append ‘ [‘ to before and prepend ‘] ‘ to after.</p></li>
+</ul>
+</dd>
+</dl>
+<p>This works best with the <a class="reference internal" href="#et_micc.logger.IndentingLogger" title="et_micc.logger.IndentingLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndentingLogger</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.logger.logtime">
+<code class="sig-prename descclassname">et_micc.logger.</code><code class="sig-name descname">logtime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#logtime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.logtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log start time, end time and duration of the task in the body of the context manager
+to the et_micc logger.</p>
+<p>This logs on debug level. To see in in the console output you must pass <code class="docutils literal notranslate"><span class="pre">-vv</span></code> to et_micc.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>global_options</strong> (<em>SimpleNameSpace</em>) – pass verbosity to the et_micc logger.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.logger.verbosity_to_loglevel">
+<code class="sig-prename descclassname">et_micc.logger.</code><code class="sig-name descname">verbosity_to_loglevel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">verbosity</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/logger.html#verbosity_to_loglevel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.logger.verbosity_to_loglevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tranlate <code class="xref py py-obj docutils literal notranslate"><span class="pre">verbosity</span></code> into a loglevel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>verbosity</strong> (<em>int</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<span class="target" id="module-et_micc.utils"></span><p>Created on 18 Nov 2019</p>
+<p>&#64;author: etijskens</p>
+<div class="section" id="module-et-micc-utils">
+<h2>Module et_micc.utils<a class="headerlink" href="#module-et-micc-utils" title="Permalink to this headline">¶</a></h2>
+<p>Utility functions for et_micc.</p>
+<dl class="py function">
+<dt id="et_micc.utils.execute">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">execute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cmds</span></em>, <em class="sig-param"><span class="n">logfun</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">stop_on_error</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">env</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">cwd</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a list of OS commands, and logs with logfun.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cmds</strong> (<em>list</em>) – list of OS commands (=list of list of str) or a single command (list of str)</p>
+</dd>
+<dt class="field-even">Parma callable logfun</dt>
+<dd class="field-even"><p>a function to write output, typically 
+<code class="docutils literal notranslate"><span class="pre">logging.getLogger('et_micc').debug</span></code>.</p>
+</dd>
+<dt class="field-odd">Returns int</dt>
+<dd class="field-odd"><p>return code of first failing command, or 0 if all
+commanbds succeed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.existsOnPyPI">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">existsOnPyPI</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#existsOnPyPI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.existsOnPyPI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does package exist already on PyPI?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True|False|Exception`</p>
+</dd>
+</dl>
+<p>In case of an exception, the result is inconclusive.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.get_project_path">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">get_project_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#get_project_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.get_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Look for a project directory in the parents of path <code class="xref py py-obj docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>Path</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the nearest directory above <code class="xref py py-obj docutils literal notranslate"><span class="pre">p</span></code> that is project directory.</p>
+</dd>
+<dt class="field-odd">Raise</dt>
+<dd class="field-odd"><p>RuntimeError if <code class="xref py py-obj docutils literal notranslate"><span class="pre">p</span></code> is noe inside a project directory.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.in_directory">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">in_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#in_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.in_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Context manager for changing the current working directory while the body of the
+context manager executes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.insert_in_file">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">insert_in_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em>, <em class="sig-param"><span class="n">lines</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">before</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">startswith</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#insert_in_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.insert_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert <em>lines</em> at a specific position in a &lt;file&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>Path</em>) – path to file in which to insert</p></li>
+<li><p><strong>lines</strong> (<em>list</em>) – list of lines to insert. If a line does not end with 
+a newline, it is added.</p></li>
+<li><p><strong>before</strong> (<em>bool</em>) – insert before or after a reference line.</p></li>
+<li><p><strong>startswith</strong> (<em>str</em>) – find the reference line as the first line that
+starts with &lt;startswith&gt;. If no such line is found the text is inserted
+at the end.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.intersect">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">intersect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version_range_1</span></em>, <em class="sig-param"><span class="n">version_range_2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#intersect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the intersection of two version ranges</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.is_project_directory">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">is_project_directory</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">project</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#is_project_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.is_project_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify that the directory <code class="file docutils literal notranslate"><span class="pre">path</span></code> is a project directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em>) – path to a directory.</p></li>
+<li><p><strong>project</strong> (<a class="reference internal" href="#et_micc.project.Project" title="et_micc.project.Project"><em>Project</em></a>) – <p>if not None these variables are set:</p>
+<ul>
+<li><p>project.project_name</p></li>
+<li><p>project.package_name</p></li>
+<li><p>project.pyproject_toml</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool.</p>
+</dd>
+</dl>
+<p>As a sufficident condition, we request that</p>
+<ul class="simple">
+<li><p>there is a pyproject.toml file, exposing the project’s name:py:obj:<cite>[‘tool’][‘poetry’][‘name’]</cite></p></li>
+<li><p>that there is a python package or module with that name, converted by <a class="reference internal" href="#et_micc.utils.pep8_module_name" title="et_micc.utils.pep8_module_name"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pep8_module_name()</span></code></a>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.operator_version">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">operator_version</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version_constraint_string</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#operator_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.operator_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split version_constraint_string in operator and version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(str,semantic_version.Version)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.pep8_module_name">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">pep8_module_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#pep8_module_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.pep8_module_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a module name to a PEP8 compliant module name.</p>
+<ul class="simple">
+<li><p>lowercase</p></li>
+<li><p>whitespace -&gt; underscore</p></li>
+<li><p>dash -&gt; underscore</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.replace_in_file">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">replace_in_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_to_search</span></em>, <em class="sig-param"><span class="n">look_for</span></em>, <em class="sig-param"><span class="n">replace_with</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#replace_in_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.replace_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace the text <code class="xref py py-obj docutils literal notranslate"><span class="pre">look_for</span></code> with <code class="xref py py-obj docutils literal notranslate"><span class="pre">replace_with</span></code> in file <code class="file docutils literal notranslate"><span class="pre">file_to_search</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.validate_intersection">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">validate_intersection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">intersection</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#validate_intersection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.validate_intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if the intersection is not empty.
+:returns: bool</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.verify_project_name">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">verify_project_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">project_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#verify_project_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.verify_project_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project names must start with a char, and contain only chars, digits, underscores and dashes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.verify_project_structure">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">verify_project_structure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">project</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#verify_project_structure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.verify_project_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify that there is either a Python module <code class="file docutils literal notranslate"><span class="pre">&lt;package_name&gt;.py</span></code>, or
+a package <code class="file docutils literal notranslate"><span class="pre">&lt;package_name&gt;/__init__.py</span></code> (and not both).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list with what was found. This list should have length 1. If its 
+length is 0, neither module.py, nor module/__init__.py were found. If its 
+length is 2, both were found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.version_constraint">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">version_constraint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version_range</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#version_constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.version_constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a version_range to a version constraing string</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="et_micc.utils.version_range">
+<code class="sig-prename descclassname">et_micc.utils.</code><code class="sig-name descname">version_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version_constraint_string</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/utils.html#version_range"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.utils.version_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return interval [lower_bound,upper_bound[ as a tuple for a given version constraint.</p>
+<p>Note that the lower bound is inclusive, but the upper bound is exclusive.
+If one of the bounds is None, then it is unbound in that direction.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-et_micc.tomlfile"></span><div class="section" id="module-et-micc-tomlfile">
+<h2>Module et_micc.tomlfile<a class="headerlink" href="#module-et-micc-tomlfile" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="et_micc.tomlfile.TomlFile">
+<em class="property">class </em><code class="sig-prename descclassname">et_micc.tomlfile.</code><code class="sig-name descname">TomlFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>pathlib.Path<span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/tomlfile.html#TomlFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.tomlfile.TomlFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read/write access to <code class="file docutils literal notranslate"><span class="pre">.toml</span></code> files (<code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> in particular).</p>
+<p>Open a <code class="file docutils literal notranslate"><span class="pre">.toml</span></code> file and read its content</p>
+<p>The content is accessed by subscripting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toml</span> <span class="o">=</span> <span class="n">TomlFile</span><span class="p">(</span><span class="s1">&#39;path/to/toml&#39;</span><span class="p">)</span>
+<span class="c1"># Read an item from the .toml file&#39;s content:</span>
+<span class="n">old_name</span> <span class="o">=</span> <span class="n">toml</span><span class="p">[</span><span class="s1">&#39;tool&#39;</span><span class="p">][</span><span class="s1">&#39;poetry&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="c1"># Modify an item in the .toml file&#39;s content (but not yet in the file):</span>
+<span class="n">toml</span><span class="p">[</span><span class="s1">&#39;tool&#39;</span><span class="p">][</span><span class="s1">&#39;poetry&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new_name&#39;</span>
+<span class="c1"># Now modify the file with the modified content:</span>
+<span class="n">toml</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str|Path</em>) – path to the .toml file.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>FileNotFoundError if the file does not exist.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="et_micc.tomlfile.TomlFile.exists">
+<code class="sig-name descname">exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/et_micc/tomlfile.html#TomlFile.exists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.tomlfile.TomlFile.exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does the <code class="file docutils literal notranslate"><span class="pre">.toml</span></code> file exist?</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.tomlfile.TomlFile.path">
+<em class="property">property </em><code class="sig-name descname">path</code><a class="headerlink" href="#et_micc.tomlfile.TomlFile.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Path object of the <code class="file docutils literal notranslate"><span class="pre">.toml</span></code> file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="et_micc.tomlfile.TomlFile.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/tomlfile.html#TomlFile.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.tomlfile.TomlFile.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the current content of the <code class="file docutils literal notranslate"><span class="pre">.toml</span></code> file back to file.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-et_micc.static_vars"></span><div class="section" id="module-et-micc-static-vars">
+<h2>Module et_micc.static_vars<a class="headerlink" href="#module-et-micc-static-vars" title="Permalink to this headline">¶</a></h2>
+<p>A decorator for adding static variables to a function.
+see <a class="reference external" href="https://stackoverflow.com/questions/279561/what-is-the-python-equivalent-of-static-variables-inside-a-function">https://stackoverflow.com/questions/279561/what-is-the-python-equivalent-of-static-variables-inside-a-function</a></p>
+<dl class="py function">
+<dt id="et_micc.static_vars.static_vars">
+<code class="sig-prename descclassname">et_micc.static_vars.</code><code class="sig-name descname">static_vars</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/et_micc/static_vars.html#static_vars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#et_micc.static_vars.static_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add static variables to a method.</p>
+<p>To add the variable <code class="xref py py-obj docutils literal notranslate"><span class="pre">counter</span></code> to <code class="xref py py-meth docutils literal notranslate"><span class="pre">foo()</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@static_vars</span><span class="p">(</span><span class="n">counter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="n">foo</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># foo.counter is incremented on every call to foo</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="devenv.html" class="btn btn-neutral float-right" title="Development environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="apps.html" class="btn btn-neutral float-left" title="Applications (CLI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Engelbert Tijskens
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

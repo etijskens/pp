@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>et_micc.expand &mdash; et_micc 1.0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> et_micc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">Micc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps.html">Applications (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devenv.html">Development environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../links.html">Interesting links on Python programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">et_micc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>et_micc.expand</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for et_micc.expand</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module et_micc.expand</span>
+<span class="sd">=====================</span>
+
+<span class="sd">Helper functions for dealing with *Cookiecutter* templates.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">shutil</span><span class="o">,</span> <span class="nn">platform</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">from</span> <span class="nn">cookiecutter.main</span> <span class="kn">import</span> <span class="n">cookiecutter</span>
+
+<span class="kn">import</span> <span class="nn">et_micc.logger</span>
+
+<span class="n">EXIT_OVERWRITE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+
+
+<div class="viewcode-block" id="resolve_template"><a class="viewcode-back" href="../../api.html#et_micc.expand.resolve_template">[docs]</a><span class="k">def</span> <span class="nf">resolve_template</span><span class="p">(</span><span class="n">template</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compose the absolute path of a template.&quot;&quot;&quot;</span>
+    
+    <span class="k">if</span>  <span class="n">template</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">template</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># absolute path</span>
+    <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">sep</span> <span class="ow">in</span> <span class="n">template</span><span class="p">:</span>
+        <span class="c1"># reative path</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">template</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># just the template name </span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;templates&#39;</span> <span class="o">/</span> <span class="n">template</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">template</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inexisting template </span><span class="si">{</span><span class="n">template</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">template</span></div>
+
+
+<div class="viewcode-block" id="set_preferences"><a class="viewcode-back" href="../../api.html#et_micc.expand.set_preferences">[docs]</a><span class="k">def</span> <span class="nf">set_preferences</span><span class="p">(</span><span class="n">micc_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the preferences in *micc_file*.</span>
+<span class="sd">    </span>
+<span class="sd">    (This function requires user interaction!)</span>
+<span class="sd">    </span>
+<span class="sd">    :param Path micc_file: path to a json file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">micc_file</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">preferences</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="n">ty</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span><span class="n">description</span> <span class="ow">in</span> <span class="n">preferences</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">description</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;{{ &#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">description</span><span class="p">:</span>
+                <span class="n">ty</span> <span class="o">=</span> <span class="n">description</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
+                <span class="n">description</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">ty</span><span class="p">)</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">click</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="o">**</span><span class="n">description</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ty</span><span class="p">:</span>
+                <span class="c1"># set the string back</span>
+                <span class="n">description</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ty</span>
+            <span class="n">preferences</span><span class="p">[</span><span class="n">parameter</span><span class="p">][</span><span class="s1">&#39;default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">answer</span>
+            
+    <span class="k">with</span> <span class="n">micc_file</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">preferences</span></div>
+
+
+<div class="viewcode-block" id="get_preferences"><a class="viewcode-back" href="../../api.html#et_micc.expand.get_preferences">[docs]</a><span class="k">def</span> <span class="nf">get_preferences</span><span class="p">(</span><span class="n">micc_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the preferences from *micc_file*.</span>
+<span class="sd">    </span>
+<span class="sd">    (This function requires user interaction if no *micc_file* was provided!)</span>
+
+<span class="sd">    :param Path micc_file: path to a json file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">micc_file</span><span class="o">.</span><span class="n">samefile</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+        <span class="c1"># There is no et_micc file with preferences yet.</span>
+        <span class="n">dotmicc</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;.et_micc&#39;</span>
+        <span class="n">dotmicc</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dotmicc_miccfile</span> <span class="o">=</span> <span class="n">dotmicc</span> <span class="o">/</span> <span class="s1">&#39;micc.json&#39;</span>
+        <span class="k">if</span> <span class="n">dotmicc_miccfile</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">preferences</span> <span class="o">=</span> <span class="n">get_preferences</span><span class="p">(</span><span class="n">dotmicc_miccfile</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">preferences</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="c1"># micc_file_template = Path(__file__).parent / &#39;micc.json&#39;</span>
+            <span class="c1"># shutil.copyfile(str(micc_file_template),str(dotmicc_miccfile))</span>
+            <span class="c1"># preferences = set_preferences(dotmicc_miccfile)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">micc_file</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">preferences</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">preferences</span></div>
+
+
+<div class="viewcode-block" id="get_template_parameters"><a class="viewcode-back" href="../../api.html#et_micc.expand.get_template_parameters">[docs]</a><span class="k">def</span> <span class="nf">get_template_parameters</span><span class="p">(</span><span class="n">preferences</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the template parameters from the preferences.</span>
+<span class="sd">    </span>
+<span class="sd">    :param dict|Path preferenes:</span>
+<span class="sd">    :returns: dict of (parameter name,parameter value) pairs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span><span class="nb">dict</span><span class="p">):</span>
+        <span class="n">template_parameters</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span><span class="n">description</span> <span class="ow">in</span> <span class="n">preferences</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">template_parameters</span><span class="p">[</span><span class="n">parameter</span><span class="p">]</span> <span class="o">=</span> <span class="n">description</span><span class="p">[</span><span class="s1">&#39;default&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">preferences</span><span class="p">,</span><span class="n">Path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">preferences</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">template_parameters</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">template_parameters</span></div>
+    
+    
+<div class="viewcode-block" id="expand_templates"><a class="viewcode-back" href="../../api.html#et_micc.expand.expand_templates">[docs]</a><span class="k">def</span> <span class="nf">expand_templates</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Expand a list of cookiecutter :py:obj:`templates` in directory :py:obj:`project_path`. </span>
+
+<span class="sd">    Expanding templates may require overwriting pre-existing files. *Micc* handles this</span>
+<span class="sd">    situation in different ways:</span>
+
+<span class="sd">    * If :py:obj:`options.overwrite` equals :py:const:`False` the exansion will</span>
+<span class="sd">      fail without overwriting any pre-existing files. The project is not modified. A</span>
+<span class="sd">      warning is produced. This is the default. To continue, rerun the command with one</span>
+<span class="sd">      of the two options below.</span>
+<span class="sd">    * If :py:obj:`options.overwrite` equals :py:const:`True` the exansion will</span>
+<span class="sd">      overwrite any pre-existing files without backup, and produce a warning, listing</span>
+<span class="sd">      the overwritten files.</span>
+<span class="sd">    * If :py:obj:`options.backup` equals :py:const:`True` pre-existing files</span>
+<span class="sd">      will be backed up (.bak) before the new files are expanded. If anything went</span>
+<span class="sd">      wrong, you can inspect the backup files, and correct the errors manually.</span>
+<span class="sd">      </span>
+<span class="sd">    :param types.SimpleNamespace options: namespace object with</span>
+<span class="sd">        options accepted by et_micc commands. Relevant attributes are </span>
+<span class="sd">        </span>
+<span class="sd">        * templates: ordered list of (paths to) cookiecutter templates that </span>
+<span class="sd">          will be expanded as they appear. The template parameters are propagated </span>
+<span class="sd">          from each template to the next.</span>
+<span class="sd">        * **verbosity**</span>
+<span class="sd">        * **project_path**: Path to the project on which the command operates.</span>
+<span class="sd">        * **template_parameters**: extra template parameters not read from *micc_file*</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">templates</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">templates</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">templates</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">templates</span> <span class="o">=</span> <span class="p">[</span><span class="n">templates</span><span class="p">]</span>
+    <span class="n">project_path</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">project_path</span>
+    <span class="n">project_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">output_dir</span> <span class="o">=</span> <span class="n">project_path</span><span class="o">.</span><span class="n">parent</span>
+    <span class="n">micc_logger</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">logger</span>
+
+    <span class="c1"># list existing files that would be overwritten if options.overwrite==True</span>
+    <span class="n">existing_files</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">template</span> <span class="ow">in</span> <span class="n">templates</span><span class="p">:</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">resolve_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>             
+        <span class="c1"># write a cookiecutter.json file in the cookiecutter template directory</span>
+        <span class="n">cookiecutter_json</span> <span class="o">=</span> <span class="n">template</span> <span class="o">/</span> <span class="s1">&#39;cookiecutter.json&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cookiecutter_json</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">template_parameters</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        
+        <span class="c1"># run cookiecutter in an empty temporary directory to check if there are any</span>
+        <span class="c1"># existing project files that would be overwritten.</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s1">&#39;_cookiecutter_tmp_&#39;</span>
+        <span class="k">if</span> <span class="n">tmp</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># expand the Cookiecutter template in a temporary directory,</span>
+        <span class="n">cookiecutter</span><span class="p">(</span> <span class="nb">str</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+                    <span class="p">,</span> <span class="n">no_input</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">,</span> <span class="n">overwrite_if_exists</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+                    <span class="p">)</span>
+        
+        <span class="c1"># find out if there are any files that would be overwritten.</span>
+        <span class="n">os_name</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tmp</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">root</span><span class="o">==</span><span class="n">tmp</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">root2</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">os_name</span><span class="o">==</span><span class="s2">&quot;Darwin&quot;</span> <span class="ow">and</span> <span class="n">f</span><span class="o">==</span><span class="s2">&quot;.DS_Store&quot;</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">file</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="n">root2</span> <span class="o">/</span> <span class="n">f</span>
+                <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">template</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="p">:</span>
+                        <span class="n">existing_files</span><span class="p">[</span><span class="n">template</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="n">existing_files</span><span class="p">[</span><span class="n">template</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    
+        <span class="k">if</span> <span class="n">existing_files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">backup</span><span class="p">:</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Pre-existing files that will be backed up (&#39;--backup&#39; specified):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                        <span class="n">src</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+                        <span class="n">dst</span> <span class="o">=</span> <span class="n">src</span> <span class="o">+</span> <span class="s1">&#39;.bak&#39;</span>
+                        <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+                        <span class="n">micc_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">dst</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">dedent</span><span class="p">()</span>
+                
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">options</span><span class="o">.</span><span class="n">overwrite</span><span class="p">:</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Pre-existing files that would be overwritten:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                        <span class="n">micc_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">src</span><span class="p">))</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">dedent</span><span class="p">()</span>
+                <span class="n">click</span><span class="o">.</span><span class="n">secho</span><span class="p">(</span><span class="s2">&quot;Aborting because &#39;overwrite==False&#39;.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;  Rerun the command with the &#39;--backup&#39; flag to first backup these files (*.bak).</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;  Rerun the command with the &#39;--overwrite&#39; flag to overwrite these files without backup.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;Aborting.&quot;</span>
+                           <span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;bright_red&#39;</span>
+                           <span class="p">)</span>
+                <span class="k">return</span> <span class="n">EXIT_OVERWRITE</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">micc_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;--overwrite&#39; specified: pre-existing files will be overwritten WITHOUT backup:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">existing_files</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                        <span class="n">micc_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     overwriting </span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                
+    <span class="c1"># Now we can safely overwrite pre-existing files.</span>
+    <span class="n">micc_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expanding templates using these parameters:</span><span class="se">\n</span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">template_parameters</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">template</span> <span class="ow">in</span> <span class="n">templates</span><span class="p">:</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="n">resolve_template</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="n">micc_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expanding template </span><span class="si">{</span><span class="n">template</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="n">cookiecutter</span><span class="p">(</span> <span class="nb">str</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+                    <span class="p">,</span> <span class="n">no_input</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">,</span> <span class="n">overwrite_if_exists</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+                    <span class="p">)</span>
+        <span class="c1"># Clean up (see issue #7)</span>
+        <span class="n">cookiecutter_json</span> <span class="o">=</span> <span class="n">template</span> <span class="o">/</span> <span class="s1">&#39;cookiecutter.json&#39;</span>
+        <span class="n">cookiecutter_json</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
+    <span class="c1"># Clean up</span>
+    <span class="k">if</span> <span class="n">tmp</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tmp</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<span class="c1">#eof</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Engelbert Tijskens
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

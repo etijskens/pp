@@ -1,0 +1,1508 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>History &mdash; et_micc 1.0.18 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Authors" href="authors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> et_micc
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.18
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Micc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apps.html">Applications (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devenv.html">Development environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Interesting links on Python programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-poetry-on-the-cluster">Using poetry on the cluster</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#v0-10-25">v0.10.25</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-9-6-2019-11-21">v0.9.6 (2019-11-21)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-9-5-2019-11-19">v0.9.5 (2019-11-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-8-0-2019-11-11">v0.8.0 (2019-11-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-7-5-2019-11-11">v0.7.5 (2019-11-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-7-4-2019-10-23">v0.7.4 (2019-10-23)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-7-3-2019-10-22">v0.7.3 (2019-10-22)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-7-2-2019-10-22">v0.7.2 (2019-10-22)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-7-1-2019-10-21">v0.7.1 (2019-10-21)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-7-0-2019-10-18">v0.7.0 (2019-10-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-8-2019-10-17">v0.6.8 (2019-10-17)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-6-2019-10-10">v0.6.6 (2019-10-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-5-2019-10-08">v0.6.5 (2019-10-08)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-4-2019-10-05">v0.6.4 (2019-10-05)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-3-2019-10-04">v0.6.3 (2019-10-04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-2-2019-10-02">v0.6.2 (2019-10-02)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-1-2019-09-27">v0.6.1 (2019-09-27)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-6-0-2019-09-27">v0.6.0 (2019-09-27)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-17-2019-09-26">v0.5.17 (2019-09-26)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-16-2019-09-25">v0.5.16 (2019-09-25)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-15-2019-09-25">v0.5.15 (2019-09-25)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-14-2019-09-25">v0.5.14 (2019-09-25)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-13-2019-09-23">v0.5.13 (2019-09-23)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-12-2019-09-19">v0.5.12 (2019-09-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-11-2019-09-18">v0.5.11 (2019-09-18)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-10-2019-09-09">v0.5.10 (2019-09-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-9-2019-09-06">v0.5.9 (2019-09-06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-8-2019-09-06">v0.5.8 (2019-09-06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-7-2019-09-06">v0.5.7 (2019-09-06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-6-2019-07-19">v0.5.6 (2019-07-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-5-2019-07-19">v0.5.5 (2019-07-19)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-4-2019-07-10">v0.5.4 (2019-07-10)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-3-2019-07-09">v0.5.3 (2019-07-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-2-2019-07-09">v0.5.2 (2019-07-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-1-2019-07-09">v0.5.1 (2019-07-09)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-5-0-2019-07-04">v0.5.0 (2019-07-04)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-4-0-2019-06-11">v0.4.0 (2019-06-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-2-5-2019-06-11">v0.2.5 (2019-06-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-2-4-2019-06-11">v0.2.4 (2019-06-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-2-3-2019-06-11">v0.2.3 (2019-06-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-1-21-2019-06-11">v0.1.21 (2019-06-11)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-0-2019-06-06">v0.0.0 (2019-06-06)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-issues">Open Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-add-indentation-to-logging">#24 [feature] add indentation to logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-building-cpp-module-fails-when-pybind11-is-pip-installed">#22 [issue] building cpp module fails when pybind11 is pip-installed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-packaging-and-deployment-and-the-use-of-poetry-in-general">#5 [feature] packaging and deployment, and the use of poetry in general</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-8-cookiecutter-json-files">issue #8 cookiecutter.json files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#closed-issues">Closed Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-fileexistserror-in-micc-module">#1 [bug] FileExistsError in micc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-add-useful-example-code-to-templates">#3 [feature] add useful example code to templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-build-commands-for-f2py-and-cpp-modules">#4 [bug] build commands for f2py and cpp modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-11-add-log-files-to-micc-build">feature #11 add log files to <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">build</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-9-prohibit-creation-of-a-micc-project-under-another-project">issue #9 prohibit creation of a micc project under another project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-7-cookiecutter-json-files-are-temporary">issue #7 cookiecutter.json files are temporary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-simple-python-project">#2 [feature] simple python project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-12-common-items-in-micc-json-files">issue #12 common items in micc.json files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-os-path-pathlib">#13 [feature] os.path -&gt; pathlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-add-flag-for-nesting-a-project-inside-another-project">#14 [feature] add flag for nesting a project inside another project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-decomposition">#6 [feature] decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-10-micc-files-are-part-of-the-template">issue #10 micc files are part of the template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-poetry-1-0-0b1-uses-different-cleo-than-0-12-17">#16 [issue] poetry 1.0.0b1 uses different cleo than 0.12.17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-using-poetry-bumping-the-version-in-pyproject-toml">#15 [issue] using poetry bumping the version in pyproject.toml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-avoiding-poetry">#19 [issue] avoiding poetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-micc-create">#21 [issue] micc create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-install-dependencies-in-current-conda-environment">#20 [issue] install dependencies in current conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-two-tools-for-reading-writing-toml-files">#18 [issue] two tools for reading/writing toml files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-poetry-1-0-0b1-does-not-play-well-with-conda">#17 [issue] poetry 1.0.0b1 does not play well with conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issue-remove-interactivity-from-micc-app-and-micc-module">#23 [issue] remove interactivity from micc app and micc module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#todo">TODO</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#poetry-considerations">Poetry considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-plan">Development plan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#think-big-start-small">Think big, start small…</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">et_micc</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>History</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/history.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="history">
+<h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<p>This section summarizes all my steps on the way to a working micc,
+including dead-ends.</p>
+<p><a class="reference external" href="https://sdss-python-template.readthedocs.io/en/latest/">https://sdss-python-template.readthedocs.io/en/latest/</a></p>
+<div class="section" id="using-poetry-on-the-cluster">
+<h2>Using poetry on the cluster<a class="headerlink" href="#using-poetry-on-the-cluster" title="Permalink to this headline">¶</a></h2>
+<p>Installed poetry with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">poetry</span></code>. <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install`</span> <span class="pre">for</span> <span class="pre">``ET-dot</span></code>
+seems to update e.g.. Numpy (it is also found in <code class="docutils literal notranslate"><span class="pre">.venv</span></code>’s <code class="docutils literal notranslate"><span class="pre">site-packages</span></code>), but
+<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span></code> nevertheless uses the preinstalled python, which is almost what
+we want, except for Numpy to appear in the <code class="docutils literal notranslate"><span class="pre">site-packages</span></code>, which wastes disk
+space.</p>
+<p>I must still be verified how we can install poetry just once for several python
+versions. Suspectedly, the system python (2.7.5 on Leibniz) is not sufficient.
+I jugded this wrong. I installed poetry on Leibniz, using the recommended
+method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">poetry</span><span class="o">/</span><span class="n">poetry</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">get</span><span class="o">-</span><span class="n">poetry</span><span class="o">.</span><span class="n">py</span> <span class="o">|</span> <span class="n">python</span>
+</pre></div>
+</div>
+<p>with the system python, and i was able to run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> on a project.</p>
+<div class="section" id="v0-10-25">
+<h3>v0.10.25<a class="headerlink" href="#v0-10-25" title="Permalink to this headline">¶</a></h3>
+<p>It’s been a while that this file has been updated …</p>
+</div>
+<div class="section" id="v0-9-6-2019-11-21">
+<h3>v0.9.6 (2019-11-21)<a class="headerlink" href="#v0-9-6-2019-11-21" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Keeping version number between micc and micc-build consistent is error-prone.
+Each has to know the other’s version number because dependencies must be set.
+Et-micc-build depends on et-micc. So et-micc-build/pyproject.toml must know
+the version number of et-micc. On the other hand, when et-micc adds a binary
+extension to a project it must add the dependency on et-micc-build to that
+project’s pyproject.toml file, and thus et-micc must know the version number
+of et-micc-build.
+bumpversion has a lot more in petto than we used so far.</p>
+<p>if they have the same version number it becomes much simpler.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="v0-9-5-2019-11-19">
+<h3>v0.9.5 (2019-11-19)<a class="headerlink" href="#v0-9-5-2019-11-19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>OOP version of micc, code much better organised now.</p></li>
+<li><p>fixed <a class="reference external" href="https://github.com/etijskens/micc/issues/19">Github issue #19</a></p></li>
+</ul>
+</div>
+<div class="section" id="v0-8-0-2019-11-11">
+<h3>v0.8.0 (2019-11-11)<a class="headerlink" href="#v0-8-0-2019-11-11" title="Permalink to this headline">¶</a></h3>
+<p>MICC exists on PyPI
+* project renamed to et-micc</p>
+</div>
+<div class="section" id="v0-7-5-2019-11-11">
+<h3>v0.7.5 (2019-11-11)<a class="headerlink" href="#v0-7-5-2019-11-11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed wrong location of <code class="file docutils literal notranslate"><span class="pre">tests</span></code> directory in <code class="file docutils literal notranslate"><span class="pre">module-py</span></code> template</p></li>
+<li><p>Fixed <a class="reference external" href="https://github.com/etijskens/micc/issues/17">Github issue #17</a> micc is no longer compatible with itself</p></li>
+<li><p>Fixed <a class="reference external" href="https://github.com/etijskens/micc/issues/12">Github issue #12</a></p></li>
+</ul>
+</div>
+<div class="section" id="v0-7-4-2019-10-23">
+<h3>v0.7.4 (2019-10-23)<a class="headerlink" href="#v0-7-4-2019-10-23" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/etijskens/micc/issues/3">Github issue #3</a></p></li>
+<li><p>created branch issue_3</p></li>
+<li><p>implemented a workaround in <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">dev-install</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-7-3-2019-10-22">
+<h3>v0.7.3 (2019-10-22)<a class="headerlink" href="#v0-7-3-2019-10-22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>micc –save/load: add .json extension if omitted, and test for filepath.</p></li>
+<li><p>tutorial</p></li>
+<li><p>micc build –clean: removes also binary extension, not only build directory</p></li>
+</ul>
+</div>
+<div class="section" id="v0-7-2-2019-10-22">
+<h3>v0.7.2 (2019-10-22)<a class="headerlink" href="#v0-7-2-2019-10-22" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>issue #6 micc build –save/load &lt;build options file&gt;.json</p></li>
+<li><p>issue #5 micc build –clean option</p></li>
+<li><p>fixed setting compile options in cpp modules.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-7-1-2019-10-21">
+<h3>v0.7.1 (2019-10-21)<a class="headerlink" href="#v0-7-1-2019-10-21" title="Permalink to this headline">¶</a></h3>
+<p>Issue2 providing f2py command line arguments through CMake seems like a lot of details
+while in fact there is no reason to use CMake to call f2py in the first place. Instead
+we try to use the <code class="xref py py-mod docutils literal notranslate"><span class="pre">numpy.f2py</span></code> module. works well.
+Which there was a python interface to cmake…</p>
+</div>
+<div class="section" id="v0-7-0-2019-10-18">
+<h3>v0.7.0 (2019-10-18)<a class="headerlink" href="#v0-7-0-2019-10-18" title="Permalink to this headline">¶</a></h3>
+<p>we are writing our issues on github now, and we are working inside a seprate
+<a class="reference external" href="https://www.git-scm.com/">git</a> branch
+for every issue. merging implies a version bump.
+* <a class="reference external" href="https://github.com/etijskens/micc/issues/1">more intuitive micc subcommands</a></p>
+</div>
+<div class="section" id="v0-6-8-2019-10-17">
+<h3>v0.6.8 (2019-10-17)<a class="headerlink" href="#v0-6-8-2019-10-17" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>fixed bug in <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">app</span></code> documentation generation</p></li>
+<li><p>wip on tutorial</p></li>
+<li><p>bug fix in <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">app</span></code></p></li>
+<li><p>if github_username is empty do not add remote origin</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">--license</span></code> option to <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code></p></li>
+<li><p>simplified test template.</p></li>
+<li><p>bug fix <code class="docutils literal notranslate"><span class="pre">--clear-log</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="v0-6-6-2019-10-10">
+<h3>v0.6.6 (2019-10-10)<a class="headerlink" href="#v0-6-6-2019-10-10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>refactored logging tools into <code class="docutils literal notranslate"><span class="pre">logging.py</span></code></p></li>
+<li><p>fixed indentation with loglevel</p></li>
+<li><p>wip tutorial-1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code> now creates a module structure by default. In this way the interface
+of <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code> and <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">module</span></code> is the same.</p></li>
+<li><p>factored out template helpers in <code class="docutils literal notranslate"><span class="pre">expand.py</span></code></p></li>
+<li><p>some code cleanup</p></li>
+<li><p>documentation</p></li>
+<li><p>log warnings if executing commands fails (rather than debug messages) so the
+user sees them always</p></li>
+</ul>
+</div>
+<div class="section" id="v0-6-5-2019-10-08">
+<h3>v0.6.5 (2019-10-08)<a class="headerlink" href="#v0-6-5-2019-10-08" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>indentation in logs</p></li>
+<li><p>log time of a command</p></li>
+<li><p>bug fix in template expansion when adding a second application</p></li>
+</ul>
+</div>
+<div class="section" id="v0-6-4-2019-10-05">
+<h3>v0.6.4 (2019-10-05)<a class="headerlink" href="#v0-6-4-2019-10-05" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>improve documentation templates</p></li>
+<li><p>replaced <code class="docutils literal notranslate"><span class="pre">--structure</span></code> option with <code class="docutils literal notranslate"><span class="pre">--module</span></code> flag and <code class="docutils literal notranslate"><span class="pre">--package</span></code> flag</p></li>
+</ul>
+</div>
+<div class="section" id="v0-6-3-2019-10-04">
+<h3>v0.6.3 (2019-10-04)<a class="headerlink" href="#v0-6-3-2019-10-04" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>started tutorial writing. They will help the user to learn how to use <em>micc</em>,
+and help me in improving the functionality of <em>micc</em>.</p></li>
+</ul>
+<p>Using <em>micc</em> myself encouraged me to</p>
+<ul>
+<li><p>command line interfaces are best non-interactive., i.e. they better
+not ask extra information. If information is missing, they better quit
+with a message. So,</p>
+<ul class="simple">
+<li><p>don’t ask for project name,</p></li>
+<li><p>don’t ask for short description</p></li>
+</ul>
+<p>This approach allows the cli to be used in scripts, and it eases the
+testing.</p>
+<p>Note that this principle should make us revisit the <code class="docutils literal notranslate"><span class="pre">micc.json</span></code> template
+parameter approach. see also issue #12, which was closed, but not entirely
+satisfactory.</p>
+</li>
+<li><p>modify <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code> as to create a project in an empty directory.</p></li>
+<li><p>Fixed: return codes from commands are now propagated as exit code of the application.</p></li>
+<li><p>Fixed: issue #12.</p></li>
+<li><p>Fixed: issue #23.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-6-2-2019-10-02">
+<h3>v0.6.2 (2019-10-02)<a class="headerlink" href="#v0-6-2-2019-10-02" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Sofar, we added the dependencies manually, by editing pyproject.toml. We should
+normally add dependencies through poetry. That seems to work well, though
+you need to be connected to the internet for this. There was one issue:
+<code class="docutils literal notranslate"><span class="pre">sphinx-click</span></code> adds <code class="docutils literal notranslate"><span class="pre">pytest=&quot;^4.4.2&quot;</span></code> as a dependency. This prevents the
+use of <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">^5.2.0</span></code>. Conclusion: <strong>do not add pytest as a dependency</strong>.
+In addition <code class="docutils literal notranslate"><span class="pre">sphinx-click</span></code> depends on <code class="docutils literal notranslate"><span class="pre">sphinx</span></code>, but seems to be request
+with <code class="docutils literal notranslate"><span class="pre">sphinx-2.1.2</span></code> rather than <code class="docutils literal notranslate"><span class="pre">sphinx-2.2.0</span></code>. Of course it slips in with
+<code class="docutils literal notranslate"><span class="pre">sphinx-click</span></code></p></li>
+<li><p>While trying to run the micc tests with <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">1.0.0b1</span></code> installed, the tests
+fail because this poetry version depends on <code class="docutils literal notranslate"><span class="pre">cleo-7.5.0</span></code> rather than <code class="docutils literal notranslate"><span class="pre">cleo-6.8.0</span></code>.
+Conclusion: <strong>we do not want our code to depend on poetry, or any of its dependencies</strong>
+<strong>except for its command line interface</strong> because it is too volatile.</p></li>
+<li><p>fixed issue #15</p></li>
+<li><p>fixed issue #16</p></li>
+<li><p>fixed issue #17</p></li>
+<li><p>fixed issue #18</p></li>
+<li><p>fixed issue #19</p></li>
+<li><p>fixed issue #20</p></li>
+<li><p>fixed issue #21</p></li>
+</ul>
+<p>micc now no longer needs poetry and can run in a conda environment.</p>
+<ul class="simple">
+<li><p>poetry install is problematic and should not be used in a conda environment.</p></li>
+<li><p>poetry build seems to work well and the Makefile commands for installing
+and reinstalling locally work well too.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-6-1-2019-09-27">
+<h3>v0.6.1 (2019-09-27)<a class="headerlink" href="#v0-6-1-2019-09-27" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>modified dependencies of micc. Created empty conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">make</span> <span class="n">reinstall</span>
+<span class="o">&gt;</span> <span class="n">pytest</span> <span class="n">tests</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>All tests succeed.</p>
+</div>
+<div class="section" id="v0-6-0-2019-09-27">
+<h3>v0.6.0 (2019-09-27)<a class="headerlink" href="#v0-6-0-2019-09-27" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>looks as most things are working smoothly now…, so we move to 0.6.0</p></li>
+<li><p>code review by codacy</p></li>
+</ul>
+</div>
+<div class="section" id="v0-5-17-2019-09-26">
+<h3>v0.5.17 (2019-09-26)<a class="headerlink" href="#v0-5-17-2019-09-26" title="Permalink to this headline">¶</a></h3>
+<p>modified assertions</p>
+</div>
+<div class="section" id="v0-5-16-2019-09-25">
+<h3>v0.5.16 (2019-09-25)<a class="headerlink" href="#v0-5-16-2019-09-25" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>adding a <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">info</span></code> command that lists information on the project</p></li>
+<li><p>improved the documentation.</p></li>
+</ul>
+</div>
+<div class="section" id="v0-5-15-2019-09-25">
+<h3>v0.5.15 (2019-09-25)<a class="headerlink" href="#v0-5-15-2019-09-25" title="Permalink to this headline">¶</a></h3>
+<p>It would be nice to have an automatic way of generating documentation from our click
+apps. Howver, the output of <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">--help</span></code> is not in .rst format…
+Here is an interesting stackoverflow issue
+<a class="reference external" href="https://stackoverflow.com/questions/39392753/how-can-i-document-click-commands-using-sphinx">for documenting click commands with sphinx</a>
+(see the answer on sphinx-click
+works like a charm</p>
+</div>
+<div class="section" id="v0-5-14-2019-09-25">
+<h3>v0.5.14 (2019-09-25)<a class="headerlink" href="#v0-5-14-2019-09-25" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Improved logging, added function <code class="docutils literal notranslate"><span class="pre">micc.utils.get_micc_logger()</span></code> to get the logger from
+everywhere, as well as a function <code class="docutils literal notranslate"><span class="pre">micc.utils.create_logger()</span></code> to create a new logger.</p></li>
+<li><p>Added a function for executing and logging a list of commands.</p></li>
+<li><p>Added a micc command for documentation generation</p></li>
+<li><p>improved testing</p></li>
+<li><p>improved output of micc version</p></li>
+<li><p>refactoring: the project_path is now a global_option accepted by all subcommands</p></li>
+</ul>
+<p>this changes the commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="n">create</span> <span class="n">foo</span>
+</pre></div>
+</div>
+<p>becomes</p>
+<blockquote>
+<div><p>&gt; micc -p path/to/foo create</p>
+</div></blockquote>
+</div>
+<div class="section" id="v0-5-13-2019-09-23">
+<h3>v0.5.13 (2019-09-23)<a class="headerlink" href="#v0-5-13-2019-09-23" title="Permalink to this headline">¶</a></h3>
+<p>improving tests. I am still rather uncomfortable with testing cli’s. Most of the code is tested by
+manual inspection. This unlucky patch number is for improving this situation.</p>
+<ul class="simple">
+<li><p>step 1: study the click documentation on testing.
+Interesting topic: File system isolation, runs a scenario in an empty directory,
+e.g. /private/var/folders/rt/7h5lk6c955db20y1rzf1rjz00000gn/T/tmpa12gc_p9
+Good idea but the location of that directory is a bit hard to trace. (Note, that
+a temporary directory inside micc doesn’t work, because micc refuses to create a
+project inside another project. a flag –allow-nesting is added (feature</p></li>
+</ul>
+<p>refactoring: still not happy with the <code class="docutils literal notranslate"><span class="pre">--simple</span></code> argument for micc</p>
+<ul>
+<li><p>how does python refer to its project structure? <code class="docutils literal notranslate"><span class="pre">module.py</span></code> vs <code class="docutils literal notranslate"><span class="pre">module/__init__.py</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">module.py</span></code> is called a <em>module</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module/__init__.py</span></code> is called a <em>package</em></p></li>
+</ul>
+<p>Thus, our <em>modules</em> may be <em>modules</em> or sub-level <em>packages</em>, and
+our <em>package</em> is actually the <em>top-level</em> <em>package</em>, which may contain
+other lower-level packages, as well as modules.</p>
+</li>
+</ul>
+<p>fixed issue #13 [feature] os.path -&gt; pathlib
+fixed issue #12 common items in micc.json files
+fixed issue #14 [feature] –allow-nesting flag for creating projects
+implemented #6 [feature] decomposition
+fixed issue #10 micc files are part of the template</p>
+</div>
+<div class="section" id="v0-5-12-2019-09-19">
+<h3>v0.5.12 (2019-09-19)<a class="headerlink" href="#v0-5-12-2019-09-19" title="Permalink to this headline">¶</a></h3>
+<p>Add logging to micc commands as we tried out in micc build</p>
+</div>
+<div class="section" id="v0-5-11-2019-09-18">
+<h3>v0.5.11 (2019-09-18)<a class="headerlink" href="#v0-5-11-2019-09-18" title="Permalink to this headline">¶</a></h3>
+<p>#2 [feature] simple python project
+add <code class="docutils literal notranslate"><span class="pre">--simple</span></code> flag to <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code> to create a simple (=unnested) python module <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;.py</span></code>
+instead of the nested <code class="docutils literal notranslate"><span class="pre">&lt;package_name/&gt;__init__.py</span></code>
+After a bit of thinking the most practical approach would be to make a copy of the cookiecutter
+template micc-package, rename directory <code class="docutils literal notranslate"><span class="pre">{{cookiecutter.package_name}}</span></code> to <code class="docutils literal notranslate"><span class="pre">src</span></code> and rename
+file <code class="docutils literal notranslate"><span class="pre">{{cookiecutter.package_name}}/__init__.py</span></code> to <code class="docutils literal notranslate"><span class="pre">src/{{cookiecutter.module_name.py}}</span></code>.
+The big advantage of that is that the directory structure is almost completely the same. Other
+approaches would need to relocate the <code class="docutils literal notranslate"><span class="pre">docs</span></code> folder, the <code class="docutils literal notranslate"><span class="pre">tests</span></code> folder and a bunch of other
+files. This will most certainly limit the number of changes that is necessary.</p>
+<p>However, this breaks the test``tests/test_&lt;module_name&gt;.py`` as the module is in <code class="docutils literal notranslate"><span class="pre">src</span></code> and it
+cannot be imported without adding <code class="docutils literal notranslate"><span class="pre">src</span></code> to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>. To cure the problem we can add a test
+to see if the project is simple and add <code class="docutils literal notranslate"><span class="pre">src</span></code> to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> if it is. The less code, the better,
+i think, thus i replace <code class="docutils literal notranslate"><span class="pre">src/&lt;module_name&gt;.py</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;module_name&gt;.py</span></code> and remove the <code class="docutils literal notranslate"><span class="pre">src</span></code>
+directory.</p>
+<p>This works fine. The next consideration that comes to my mind is that as a simple python package
+grows, it might be useful to be able to convert it to a general python package. To do that,
+the missing <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files must be added, with their references to cookiecutter variables
+correctly replaced. Currently, however, the cookiecutter variables aren’t stored in the project.
+Moreover, cookiecutter doesn’t support filters to use part of a template. so we must copy that
+part into a seperate cookiecutter template. Hence, this is the plan:</p>
+<ul class="simple">
+<li><p>we remove the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory from the <code class="docutils literal notranslate"><span class="pre">micc-package</span></code> template and from the
+<code class="docutils literal notranslate"><span class="pre">micc-package-simple</span></code> template.</p></li>
+<li><p>we create a <code class="docutils literal notranslate"><span class="pre">micc-package-simple-docs</span></code> template with the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files from
+<code class="docutils literal notranslate"><span class="pre">micc-package-simple</span></code></p></li>
+<li><p>and a <code class="docutils literal notranslate"><span class="pre">micc-package-general-docs</span></code> template with the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files that must be added or overwritten
+from <code class="docutils literal notranslate"><span class="pre">micc-package</span></code></p></li>
+</ul>
+<p>Moreover, we split of the common parts of <code class="docutils literal notranslate"><span class="pre">micc-package</span></code> and <code class="docutils literal notranslate"><span class="pre">micc-package-simple</span></code> into</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">micc-package</span></code>, common parts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc-package-general</span></code>, general package specific parts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc-package-simple</span></code>, simple package specific parts</p></li>
+</ul>
+<p>we also change all names of cookiecutter template from <code class="docutils literal notranslate"><span class="pre">micc-whatever&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">template-&lt;whatever&gt;</span></code>
+Thus, when a general package is created, we must use the templates (in this order)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package-general</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package-simple-docs</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package-general-docs</span></code></p></li>
+</ul>
+<p>and when a simple package is created, we must use the templates (in this order)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package-simple</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template-package-simple-docs</span></code></p></li>
+</ul>
+<p>Then converting a simple python project to a general python project is simple:</p>
+<ul class="simple">
+<li><p>add directory <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;</span></code> to the project,</p></li>
+<li><p>copy <code class="docutils literal notranslate"><span class="pre">&lt;packaga_name&gt;.py</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;packaga_name&gt;/__init__.py</span></code>.</p></li>
+<li><p>add the template <code class="docutils literal notranslate"><span class="pre">template-package-general-docs</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="v0-5-10-2019-09-09">
+<h3>v0.5.10 (2019-09-09)<a class="headerlink" href="#v0-5-10-2019-09-09" title="Permalink to this headline">¶</a></h3>
+<p>Fixed issue #4:</p>
+<ul class="simple">
+<li><p>added command <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">build</span> <span class="pre">[-s|--soft-link]</span></code>, builds all binary projects (C++ and f2py)</p></li>
+<li><p>builders removed from Makefile</p></li>
+</ul>
+<p>Fixing issue #4 raised a problem: the environment of subprocess is not the same as
+that in which micc script is run. In particular <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">python</span></code> returns <code class="docutils literal notranslate"><span class="pre">/usr/bin/python</span></code>.
+As a consequence pybind11 is not found. after using <code class="docutils literal notranslate"><span class="pre">subproces.run(</span> <span class="pre">...</span> <span class="pre">,</span> <span class="pre">env=my_env,</span> <span class="pre">...)</span></code>
+things are working (with the caveat that subprocess picks up the environment in which it is
+running. If run in eclipse, e.g. it will pick up the environment from which eclipse was started.
+As a consequence it may pick up the system python and not find pybind11.)</p>
+</div>
+<div class="section" id="v0-5-9-2019-09-06">
+<h3>v0.5.9 (2019-09-06)<a class="headerlink" href="#v0-5-9-2019-09-06" title="Permalink to this headline">¶</a></h3>
+<p>fixed issue #1</p>
+</div>
+<div class="section" id="v0-5-8-2019-09-06">
+<h3>v0.5.8 (2019-09-06)<a class="headerlink" href="#v0-5-8-2019-09-06" title="Permalink to this headline">¶</a></h3>
+<p>fixed issue #3 for cpp modules</p>
+</div>
+<div class="section" id="v0-5-7-2019-09-06">
+<h3>v0.5.7 (2019-09-06)<a class="headerlink" href="#v0-5-7-2019-09-06" title="Permalink to this headline">¶</a></h3>
+<p>fixed issue #3 for f2py modules</p>
+</div>
+<div class="section" id="v0-5-6-2019-07-19">
+<h3>v0.5.6 (2019-07-19)<a class="headerlink" href="#v0-5-6-2019-07-19" title="Permalink to this headline">¶</a></h3>
+<p>in v0.5.5, we could do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="n">module</span> <span class="n">bar</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">module</span> <span class="n">bar</span> <span class="o">--</span><span class="n">f2py</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">module</span> <span class="n">bar</span> <span class="o">--</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>without error, in arbitrary order. However, the f2py module and the C++ module
+will generate the same <code class="docutils literal notranslate"><span class="pre">bar.&lt;something&gt;.so</span></code> file in the package folder, which
+is obviously wrong. In addition the .so files will be in conflict with <code class="docutils literal notranslate"><span class="pre">bar.py</span></code>.</p>
+<p>This version fixes this problem by verifying that the module name is not already
+in use. If it is, an exception is raised.</p>
+</div>
+<div class="section" id="v0-5-5-2019-07-19">
+<h3>v0.5.5 (2019-07-19)<a class="headerlink" href="#v0-5-5-2019-07-19" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>add cookiecutter template for C++ modules.</p></li>
+</ul>
+<p>We need:</p>
+<ul class="simple">
+<li><p>a C++ compiler (icpc or g++). On my mac i’d like to use GCC installed
+with <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">gcc</span></code>, or the g++ that comes with xcode. On the cluster
+I prefer Intel’s <code class="docutils literal notranslate"><span class="pre">icpc</span></code>.</p></li>
+<li><p>a Boost.Python library for the python in the environment. On the cluster
+there are  modules with Boost.Python such as the Intel Python distribution.
+Building Boost with python isn’t particulary easy, so, let’s see what Anaconda
+cloud provides.</p>
+<ul>
+<li><p><a class="reference external" href="https://anaconda.org/conda-forge/boost-cpp">boost-cpp v1.70</a>,
+which has 1.76M downloads, so it is certainly worth trying.
+bad luck: does not provide Boost.Python. A pity, I always like to have the
+latest Boost version.</p></li>
+<li><p><a class="reference external" href="https://anaconda.org/anaconda/libboost">libboost</a>: boost v1.67,
+not the most recent but certainly ok, unfortunately also no Boost.Python.</p></li>
+<li><p><cite>py-boost &lt;https://anaconda.org/anaconda/py-boost&gt;: boost v1.67 and
+``libboost_python.dylib`</cite> and <code class="docutils literal notranslate"><span class="pre">libboost_python37.dylib</span></code>. We used this before.</p></li>
+</ul>
+</li>
+<li><p>The include files <code class="docutils literal notranslate"><span class="pre">numpy_boost.hpp</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy_boost_python.hpp</span></code> are copied to
+the <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;/numpy_boost</span></code> directory. At some time they can be moved
+to a fixed place in the micc distribution. The user will probably never touch
+these files anyway.</p></li>
+</ul>
+<p>For compiling the module we have several options:</p>
+<ul class="simple">
+<li><p>a build script, as for the f2pymodules,</p></li>
+<li><p>a separate makefile, or</p></li>
+<li><p>suitable targets in the project makefile.</p></li>
+</ul>
+<p>For building we use the make system from et/make. For the time being, we
+copy all makefiles into the <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;/make</span></code> directory. In the end
+they could be
+distributed with micc, together with <cite>numpy_boost.hpp`</cite> and
+<code class="docutils literal notranslate"><span class="pre">numpy_boost_python.hpp</span></code>. Note that the locations of the <code class="docutils literal notranslate"><span class="pre">make</span></code> and
+<code class="docutils literal notranslate"><span class="pre">numpy_boost</span></code> directories are hardcoded as <code class="docutils literal notranslate"><span class="pre">./make</span></code> and <code class="docutils literal notranslate"><span class="pre">./numpy_boost</span></code>
+so that <code class="docutils literal notranslate"><span class="pre">make</span></code> must be run in the package directory, for the time being.
+That went fine, however, the issue with py-boost MACOS is still there. See
+<code class="docutils literal notranslate"><span class="pre">et/numpy_boost/test_numpy_boost/macosx_anaconda_py-boost.md</span></code>.
+The problem could be fixed by reverting to python 3.6 using the conda
+environment created as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">py</span><span class="o">-</span><span class="n">boost</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.7</span> <span class="n">py</span><span class="o">-</span><span class="n">boost</span>
+<span class="o">&gt;</span> <span class="n">conda</span> <span class="n">install</span> <span class="n">py</span><span class="o">-</span><span class="n">boost</span> <span class="n">python</span> <span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">4</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+</pre></div>
+</div>
+<p>as suggested here (<a class="reference external" href="https://github.com/pybind/pybind11/issues/1579">https://github.com/pybind/pybind11/issues/1579</a>).
+Make sure to rerun the last line after installing a package
+This fix doesn’t seem to work anymore (2019.07.12). Python-3.6.4 is no longer
+available… Hence we look further:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://anaconda.org/anaconda/boost">https://anaconda.org/anaconda/boost</a> has libboost-python, but not also
+segfaults.</p></li>
+</ul>
+<p>[At this point i checked that the test code works on Leibniz using the Intel
+Python distribution: it does! So the problem is the same as before, but the
+solution does no longer work.]</p>
+<p>I gave up… Started compiling Boost.Python myself. Download the boost version
+you like, and uncompress</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; cd ~/software/boost_1_70_0
+&gt; ./bootstrap.sh --with-python=`which python` --with-libraries=&quot;python&quot;
+&gt; ./b2 toolset=darwin stage
+</pre></div>
+</div>
+<p>Got errors like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span><span class="n">failed</span> <span class="n">darwin</span><span class="o">.</span><span class="n">compile</span><span class="o">.</span><span class="n">c</span><span class="o">++</span> <span class="nb">bin</span><span class="o">.</span><span class="n">v2</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">darwin</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">/</span><span class="n">threading</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">visibility</span><span class="o">-</span><span class="n">hidden</span><span class="o">/</span><span class="nb">tuple</span><span class="o">.</span><span class="n">o</span><span class="o">...</span>
+<span class="n">darwin</span><span class="o">.</span><span class="n">compile</span><span class="o">.</span><span class="n">c</span><span class="o">++</span> <span class="nb">bin</span><span class="o">.</span><span class="n">v2</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">darwin</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">/</span><span class="n">threading</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">visibility</span><span class="o">-</span><span class="n">hidden</span><span class="o">/</span><span class="nb">str</span><span class="o">.</span><span class="n">o</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">libs</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="nb">str</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">.</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="nb">str</span><span class="o">.</span><span class="n">hpp</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">.</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">prefix</span><span class="o">.</span><span class="n">hpp</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span>
+<span class="o">./</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">wrap_python</span><span class="o">.</span><span class="n">hpp</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="p">:</span> <span class="s1">&#39;pyconfig.h&#39;</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="c1"># include &lt;pyconfig.h&gt;</span>
+          <span class="o">^~~~~~~~~~~~</span>
+<span class="mi">1</span> <span class="n">error</span> <span class="n">generated</span><span class="o">.</span>
+
+    <span class="s2">&quot;g++&quot;</span>   <span class="o">-</span><span class="n">fvisibility</span><span class="o">-</span><span class="n">inlines</span><span class="o">-</span><span class="n">hidden</span> <span class="o">-</span><span class="n">fPIC</span> <span class="o">-</span><span class="n">m64</span> <span class="o">-</span><span class="n">O3</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">fvisibility</span><span class="o">=</span><span class="n">hidden</span> <span class="o">-</span><span class="n">dynamic</span> <span class="o">-</span><span class="n">gdwarf</span><span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="n">fexceptions</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">inline</span>
+    <span class="o">-</span><span class="n">DBOOST_ALL_NO_LIB</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">DBOOST_PYTHON_SOURCE</span> <span class="o">-</span><span class="n">DNDEBUG</span>  <span class="o">-</span><span class="n">I</span><span class="s2">&quot;.&quot;</span> <span class="o">-</span><span class="n">I</span><span class="s2">&quot;/Users/etijskens/miniconda3/envs/pp2017/include/python3.6m&quot;</span>
+    <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="s2">&quot;bin.v2/libs/python/build/darwin-4.2.1/release/python-3.6/threading-multi/visibility-hidden/str.o&quot;</span>
+    <span class="s2">&quot;libs/python/src/str.cpp&quot;</span>
+</pre></div>
+</div>
+<p>The -I option specifies the wrong Python location! had to remove the Python
+configuration in <code class="docutils literal notranslate"><span class="pre">~/user-config.jam</span></code>.</p>
+<p>Still got “pyconfig.h not found errors”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span><span class="n">failed</span> <span class="n">darwin</span><span class="o">.</span><span class="n">compile</span><span class="o">.</span><span class="n">c</span><span class="o">++</span> <span class="nb">bin</span><span class="o">.</span><span class="n">v2</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">darwin</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="mf">3.7</span><span class="o">/</span><span class="n">threading</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">visibility</span><span class="o">-</span><span class="n">hidden</span><span class="o">/</span><span class="nb">list</span><span class="o">.</span><span class="n">o</span><span class="o">...</span>
+<span class="n">darwin</span><span class="o">.</span><span class="n">compile</span><span class="o">.</span><span class="n">c</span><span class="o">++</span> <span class="nb">bin</span><span class="o">.</span><span class="n">v2</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">darwin</span><span class="o">-</span><span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="n">release</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="mf">3.7</span><span class="o">/</span><span class="n">threading</span><span class="o">-</span><span class="n">multi</span><span class="o">/</span><span class="n">visibility</span><span class="o">-</span><span class="n">hidden</span><span class="o">/</span><span class="n">long</span><span class="o">.</span><span class="n">o</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">libs</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">long</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">.</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">long</span><span class="o">.</span><span class="n">hpp</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">.</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">prefix</span><span class="o">.</span><span class="n">hpp</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span>
+<span class="o">./</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">detail</span><span class="o">/</span><span class="n">wrap_python</span><span class="o">.</span><span class="n">hpp</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="p">:</span> <span class="s1">&#39;pyconfig.h&#39;</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="c1"># include &lt;pyconfig.h&gt;</span>
+          <span class="o">^~~~~~~~~~~~</span>
+<span class="mi">1</span> <span class="n">error</span> <span class="n">generated</span><span class="o">.</span>
+
+    <span class="s2">&quot;g++&quot;</span>   <span class="o">-</span><span class="n">fvisibility</span><span class="o">-</span><span class="n">inlines</span><span class="o">-</span><span class="n">hidden</span> <span class="o">-</span><span class="n">fPIC</span> <span class="o">-</span><span class="n">m64</span> <span class="o">-</span><span class="n">O3</span> <span class="o">-</span><span class="n">Wall</span> <span class="o">-</span><span class="n">fvisibility</span><span class="o">=</span><span class="n">hidden</span> <span class="o">-</span><span class="n">dynamic</span> <span class="o">-</span><span class="n">gdwarf</span><span class="o">-</span><span class="mi">2</span>
+    <span class="o">-</span><span class="n">fexceptions</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">inline</span>  <span class="o">-</span><span class="n">DBOOST_ALL_NO_LIB</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span><span class="n">DBOOST_PYTHON_SOURCE</span> <span class="o">-</span><span class="n">DNDEBUG</span>  <span class="o">-</span><span class="n">I</span><span class="s2">&quot;.&quot;</span>
+   <span class="o">-</span><span class="n">I</span><span class="s2">&quot;/Users/etijskens/miniconda3/envs/ws2/include/python3.7&quot;</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span>
+   <span class="s2">&quot;bin.v2/libs/python/build/darwin-4.2.1/release/python-3.7/threading-multi/visibility-hidden/long.o&quot;</span>
+   <span class="s2">&quot;libs/python/src/long.cpp&quot;</span>
+</pre></div>
+</div>
+<p>The -I option specifies <code class="docutils literal notranslate"><span class="pre">/Users/etijskens/miniconda3/envs/ws2/include/python3.7</span></code>
+whereas on my mac it is called <code class="docutils literal notranslate"><span class="pre">/Users/etijskens/miniconda3/envs/ws2/include/python3.7m</span></code>.
+a soft link <code class="docutils literal notranslate"><span class="pre">python3.7</span></code> which links to <code class="docutils literal notranslate"><span class="pre">python3.7m</span></code> solves the problem.
+Alternatively, edit the <code class="docutils literal notranslate"><span class="pre">project-config.jam</span></code> file and replace the <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">python</span> <span class="pre">:</span></code> line
+with (on a single line, I guess):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">python</span> <span class="p">:</span> <span class="mf">3.7</span> <span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ws2</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span> \
+             <span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ws2</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python3</span><span class="o">.</span><span class="mi">7</span><span class="n">m</span> \
+             <span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ws2</span><span class="o">/</span><span class="n">lib</span> <span class="p">;</span>
+</pre></div>
+</div>
+<p>Now Boost.Python builds fine. The libraries are in <code class="docutils literal notranslate"><span class="pre">stage/lib</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">ll</span> <span class="n">stage</span><span class="o">/</span><span class="n">lib</span>
+<span class="n">total</span> <span class="mi">13952</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">etijskens</span>  <span class="n">staff</span>   <span class="mi">935152</span> <span class="n">Jul</span> <span class="mi">12</span> <span class="mi">12</span><span class="p">:</span><span class="mi">23</span> <span class="n">libboost_numpy37</span><span class="o">.</span><span class="n">a</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">1</span> <span class="n">etijskens</span>  <span class="n">staff</span>    <span class="mi">73852</span> <span class="n">Jul</span> <span class="mi">12</span> <span class="mi">12</span><span class="p">:</span><span class="mi">23</span> <span class="n">libboost_numpy37</span><span class="o">.</span><span class="n">dylib</span><span class="o">*</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">etijskens</span>  <span class="n">staff</span>  <span class="mi">5750432</span> <span class="n">Jul</span> <span class="mi">12</span> <span class="mi">12</span><span class="p">:</span><span class="mi">23</span> <span class="n">libboost_python37</span><span class="o">.</span><span class="n">a</span>
+<span class="o">-</span><span class="n">rwxr</span><span class="o">-</span><span class="n">xr</span><span class="o">-</span><span class="n">x</span>  <span class="mi">1</span> <span class="n">etijskens</span>  <span class="n">staff</span>   <span class="mi">374980</span> <span class="n">Jul</span> <span class="mi">12</span> <span class="mi">12</span><span class="p">:</span><span class="mi">23</span> <span class="n">libboost_python37</span><span class="o">.</span><span class="n">dylib</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">/Users/etijskens/miniconda3/envs/ws2/lib</span></code> create soft links to both
+libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ws2</span><span class="o">/</span><span class="n">lib</span>
+<span class="o">&gt;</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">boost_1_70_0</span><span class="o">/</span><span class="n">stage</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libboost_python37</span><span class="o">.</span><span class="n">dylib</span>
+<span class="o">&gt;</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">boost_1_70_0</span><span class="o">/</span><span class="n">stage</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libboost_numpy37</span><span class="o">.</span><span class="n">dylib</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">/Users/etijskens/miniconda3/envs/ws2/include</span></code>, if there is no <code class="docutils literal notranslate"><span class="pre">boost</span></code>
+subdirectory, create soft links to
+libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ws2</span><span class="o">/</span><span class="n">include</span>
+<span class="o">&gt;</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">boost_1_70_0</span><span class="o">/</span><span class="n">boost</span>
+</pre></div>
+</div>
+<p>If there is already a <code class="docutils literal notranslate"><span class="pre">boost</span></code> subdirectory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">etijskens</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">ws2</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">boost</span>
+<span class="o">&gt;</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">boost_1_70_0</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span><span class="o">.</span><span class="n">hpp</span>
+<span class="o">&gt;</span> <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">boost_1_70_0</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">python</span>
+</pre></div>
+</div>
+<p>… on Linux this works fine. On my Mac however I keep running into problems.</p>
+<p>While googling for a solution, I came across pybind11.
+These sections in the readme makes me particularly curious:</p>
+<ul class="simple">
+<li><p>pybind11 is a lightweight header-only library that exposes C++ types in
+Python and vice versa, mainly to create Python bindings of existing C++ code.</p></li>
+<li><p>Think of this library as a tiny self-contained version of Boost.Python with
+everything stripped away that isn’t relevant for binding generation. Without
+comments, the core header files only require ~4K lines of code and depend on
+Python (2.7 or 3.x, or PyPy2.7 &gt;= 5.7) and the C++ standard library. This
+compact implementation was possible thanks to some of the new C++11 language
+features (specifically: tuples, lambda functions and variadic templates). Since
+its creation, this library has grown beyond Boost.Python in many ways, leading
+to dramatically simpler binding code in many common situations.</p></li>
+<li><p>Find some examples of its use in <a class="reference external" href="http://people.duke.edu/~ccc14/cspy/18G_C++_Python_pybind11.html">Using pybind11</a></p></li>
+</ul>
+<p>Works as a charm. Comes with a cross-platform CMake build system that works out
+of the box. Must put a soft link to the pybind11 repository in the project
+directory for the <code class="docutils literal notranslate"><span class="pre">add_subdirectory(pybind11)</span></code> statement to work. (in section
+“6.3.3 find_package vs. add_subdirectory” of the pybind11 manual, it is stated
+that this can be overcome with <code class="docutils literal notranslate"><span class="pre">find_package(pybind11</span> <span class="pre">REQUIRED)</span></code> (this finds
+the pybind11 installed in the the current python environment out of the box -
+which is a good reason to <code class="docutils literal notranslate"><span class="pre">conda|pip</span> <span class="pre">install</span> <span class="pre">pybind11</span></code>, rather than check it
+out from github).
+That releaves me from maintaining the <code class="docutils literal notranslate"><span class="pre">make</span></code> stuff i wrote. (With a little bit
+of CMake code for the f2py modules everything becomes much better streamlined and
+the <code class="docutils literal notranslate"><span class="pre">et/make</span></code> system is no longer needed.</p>
+<p>Had some trouble making it work on Leibniz. CMake’s <code class="docutils literal notranslate"><span class="pre">FindPythonInterp</span></code> relies on
+<code class="docutils literal notranslate"><span class="pre">python-config</span></code> to pick up the location current python executable. Unfortunately,
+the Python environment I was using only defines <code class="docutils literal notranslate"><span class="pre">python3-config</span></code>, and not
+<code class="docutils literal notranslate"><span class="pre">python-config</span></code>. That soft link still had to be added.</p>
+<p>Must now figure out how to deal with numpy arrays… There is some interesting
+information in section “11.6 Eigen” of the pybind11 manual, allowing numpy arrays
+to be passed by reference and work with <a class="reference external" href="http://eigen.tuxfamily.org">Eigen</a>
+matrices on the C++ side. Using Eigen instead of Boost.MultiArray has the
+additional advantage that there is some dense and sparse linear algebra routines
+are also available.</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">Boost_INCLUDE_DIR</span></code> and <code class="docutils literal notranslate"><span class="pre">Eigen3_INCLUDE_DIR</span></code> in <code class="docutils literal notranslate"><span class="pre">pybind11/CMakeLists.txt</span></code>.
+Now Eigen tests are run as well and no failures observed.</p>
+<p>The fact that cmake does so well, make me wonder if i shouldn’t use cmake for the
+f2py modules as well instead of a shell script that will fail on windows.
+<a class="reference external" href="https://github.com/scikit-build">Scikit-build</a> contains a
+<a class="reference external" href="https://github.com/scikit-build/scikit-build/blob/master/skbuild/resources/cmake/FindF2PY.cmake">FindF2py.cmake</a>
+The tool, however, lets f2py find out the Fortran and C compiler it should use,
+and does not add any optimisation flags.</p>
+<p>There is a slight catch in using CMake: the filename <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> is fixed.
+As “fixed”” as in “impossible to change”
+(see <a class="reference external" href="http://cmake.3232098.n2.nabble.com/Changing-name-of-CMakeLists-txt-file-td4408932.html">this</a>).
+That requires us to have a separate directory for each cpp module we want to add.
+We did not have that restriction with f2py modules. For reasons of consistency,
+we might change that. Module directory names should then, probably, be set as
+<code class="docutils literal notranslate"><span class="pre">f2py_module</span></code> and <code class="docutils literal notranslate"><span class="pre">cpp_module</span></code> rather than the other way around, so modules
+of the same type appear consecutivel in a directory listing. Sofar, Python modules
+added through <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">module</span> <span class="pre">my_module</span></code> appear as my_module.py in the package directory.</p>
+<p>CMake version is working. F2py autoselects the compilers (Fortran and C)
+We further accomplished</p>
+<ul class="simple">
+<li><p>get rid of the soft link to pybind11 by referring to its installation
+directory in CMakeLists.txt. Fixed! Finds the pybind11 installed in the current
+Python environment out of the box! (see pybind11 documentation
+<code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">systems/Building</span> <span class="pre">with</span> <span class="pre">CMake/find_package</span> <span class="pre">vs</span> <span class="pre">add_subdirectory)</span></code>).
+done.</p></li>
+<li><p>get rid of the directory cmake_f2py_tools by referring to its location inside
+micc in CMakeLists.txt (we do not want endless copies of these, nor soft links)
+How can i install the micc CMake files so i can find them in the same way
+<code class="docutils literal notranslate"><span class="pre">find_package(micc</span> <span class="pre">CONFIG</span> <span class="pre">REQUIRED)</span></code>. Playing the trick of pybind11 to install
+files into <code class="docutils literal notranslate"><span class="pre">/path/to/my_conda_environment/share/pybind11</span></code>
+seems to be non-trivial (<a class="reference external" href="https://github.com/pybind/pybind11/issues/1628">https://github.com/pybind/pybind11/issues/1628</a>. Let’s see
+if we can work around this. We can indeed easily work around. The <code class="docutils literal notranslate"><span class="pre">micc.utils</span></code>
+module now has a function <code class="docutils literal notranslate"><span class="pre">path_to_cmake_tools()</span></code> that returns the path to the
+cmake_tools directory (using <code class="docutils literal notranslate"><span class="pre">__file__</span></code>). This path is added to the template
+parameters (before they are exported to cookiecutter.json). Then Cookiecutter
+knows the path and can insert it in the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>. Simple, and no loose
+ends.
+done.</p></li>
+</ul>
+<p>The approach to expose the <code class="docutils literal notranslate"><span class="pre">micc/cmake_tools</span></code> directory to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>
+of an fpy module through <code class="docutils literal notranslate"><span class="pre">utils.path_to_cmake_tools()</span></code> is a bit static as it
+hardcodes the path of the micc version that was use to create the module. If it
+changes, because that micc version is moved, or because development continues in
+another python environment, the build will fail. Instead we rely on the CMake
+variable <code class="docutils literal notranslate"><span class="pre">${PYTHON_SITE_PACKAGES}</span></code> and append <code class="docutils literal notranslate"><span class="pre">/micc/cmake_tools</span></code> to it.</p>
+<p>Now add the cookiecutter templates for C++ modules</p>
+<p>Tested f2py and cpp modules and their test scripts.</p>
+</div>
+<div class="section" id="v0-5-4-2019-07-10">
+<h3>v0.5.4 (2019-07-10)<a class="headerlink" href="#v0-5-4-2019-07-10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="simple">
+<dt>add cookiecutter template for fortran modules with f2py. We need:</dt><dd><ul>
+<li><p>f2py, comes with Numpy</p></li>
+<li><p>a fortran compiler</p></li>
+<li><p>a C compiler</p></li>
+<li><p>what can be provided out of the box by conda?</p></li>
+<li><p>support for this on on the clusters</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>I followed this advice:
+<a class="reference external" href="https://www.scivision.dev/f2py-running-fortran-code-in-python-on-windows/">f2py-running-fortran-code-in-python</a>
+and installed gcc from homebrew <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">gcc</span></code>. Inside the Conda
+environment I created soft links to gcc, g++ and gfortran.</p>
+<p>There is an issue with Fortran arguments of type real*16, which become
+<code class="docutils literal notranslate"><span class="pre">long_double</span></code> instead of <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">double</span></code> in the <code class="docutils literal notranslate"><span class="pre">&lt;modulename&gt;module.c</span></code>
+wrapper file. The issue is circumvented by editing that file and running
+f2py_local.sh a second time. The issue occurred in gcc 7.4.0, 8.3.0 and
+9.1.0. Switching to gcc provided by XCode does not help either. However,
+adding <code class="docutils literal notranslate"><span class="pre">-Dlong_double=&quot;long</span> <span class="pre">double&quot;</span></code> to the f2py command line options
+solves the problem nicely. :)</p>
+<p>I, typically, had different bash scripts for running f2py, one for building
+locally and one for each cluster. It would be nice if a single script would
+do and pickup the right compiler from the environment where it is run, as
+well as set the correct compiler options. There may be different f2py modules,
+so there will be a different script for every f2py module: <code class="docutils literal notranslate"><span class="pre">f2py_&lt;module_name&gt;.sh</span></code>.
+Preferentially <code class="docutils literal notranslate"><span class="pre">&lt;module_name&gt;</span></code> ends with <code class="docutils literal notranslate"><span class="pre">f90</span></code>. The module name appears
+also inside the script. The script looks for a ifort, and if absent for
+gfortran in the environment. It uses gcc for compiling the C-wrappers and
+for f2py. If one of the components is missing, the script exits with a non-
+zero error code and an error message. The makefile can call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for s in f2py_*.sh; do ./${s}; done
+</pre></div>
+</div>
+<p>Do we want a fortran module or not? the fortran module complicates stuff, as
+it appears as a namespace inside the python module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># a) with a fortran module:</span>
+<span class="c1"># import the python module (built from compute_f90_a.f90) which lives</span>
+<span class="c1"># in the proj_f2py package:</span>
+<span class="kn">import</span> <span class="nn">proj_f2py.compute_f90_a</span> <span class="k">as</span> <span class="nn">python_module_a</span>
+<span class="c1"># create an alias for the fortran module inside that python module, which</span>
+<span class="c1"># is called &#39;f90_module&#39;. The fortran module  behaves as any other member</span>
+<span class="c1"># in the python module.</span>
+<span class="n">f90</span> <span class="o">=</span> <span class="n">python_module</span><span class="o">.</span><span class="n">f90_module</span>
+
+<span class="c1"># b) without a fortran module:</span>
+<span class="c1"># import the python module (built from compute_f90_b.f90)</span>
+<span class="c1"># this doesn not have a fortran module inside.</span>
+<span class="kn">import</span> <span class="nn">proj_f2py.compute_f90_b</span> <span class="k">as</span> <span class="nn">python_module_b</span>
+</pre></div>
+</div>
+<p>Documenting fortran modules with sphinx is problematic. There exists a sphinx
+extension <a class="reference external" href="https://sphinx-fortran.readthedocs.io/en/latest/index.html">sphinx-fortran</a>,
+but this works presumably only with <a class="reference external" href="http://www.sphinx-doc.org/en/master/">sphinx</a>
+versions older than 1.8, and it is not avtively maintained/developed, which is a
+pity imho. As an alternative we include a file <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;/&lt;package_name&gt;/&lt;module_f2py&gt;.rst</span></code>
+which has a suitable template for adding the documentation. As we actually want to
+document a python module (built from Fortran code with f2py), we expect the user to
+enter documentation for the wrapper functions, not for the pure Fortran functions.
+That goes in the <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;/&lt;package_name&gt;/&lt;module_f2py&gt;.f90</span></code> file but is
+not exposed in the project documentation.</p>
+</div>
+<div class="section" id="v0-5-3-2019-07-09">
+<h3>v0.5.3 (2019-07-09)<a class="headerlink" href="#v0-5-3-2019-07-09" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>check for overwriting files (we must specify <code class="docutils literal notranslate"><span class="pre">overwrite_if_exists</span></code> for
+cookiecutter because it will already report an error if just the directories
+exist. Adding files to existing directories is not supported out of the box.)
+The more components one can add, the higher the chance that there is going to
+be a name clash and files are going to be overwritten. We do not want this to
+happen.
+We propose that <code class="docutils literal notranslate"><span class="pre">micc</span></code> should fail when files are overwritten, and that the
+command be run again with a <code class="docutils literal notranslate"><span class="pre">--force</span></code> option.</p>
+<ul>
+<li><p>Maybe, we can monkey patch this problem in cookiecutter. No success.</p></li>
+<li><p>Create a tree of directories and files to be created and check against the
+pre-existing tree. Seems complicated.</p></li>
+<li><p>Create the tree to be added in a temporary dir which does not yet exist, and
+than check for collisions. That seems feasible.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="v0-5-2-2019-07-09">
+<h3>v0.5.2 (2019-07-09)<a class="headerlink" href="#v0-5-2-2019-07-09" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>add option <code class="docutils literal notranslate"><span class="pre">--f2py</span></code> to <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">module</span> <span class="pre">...</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="v0-5-1-2019-07-09">
+<h3>v0.5.1 (2019-07-09)<a class="headerlink" href="#v0-5-1-2019-07-09" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span> <span class="pre">...</span></code> must write a .gitignore file and other configuration
+files. Addition of modules, apps do not change these.</p></li>
+<li><p>Cookiecutter template micc-module-f2py added, no code to use it yet</p></li>
+</ul>
+</div>
+<div class="section" id="v0-5-0-2019-07-04">
+<h3>v0.5.0 (2019-07-04)<a class="headerlink" href="#v0-5-0-2019-07-04" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed poetry issue #1182</p></li>
+</ul>
+</div>
+<div class="section" id="v0-4-0-2019-06-11">
+<h3>v0.4.0 (2019-06-11)<a class="headerlink" href="#v0-4-0-2019-06-11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>First functional working version with</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">app</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">module</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">tag</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="v0-2-5-2019-06-11">
+<h3>v0.2.5 (2019-06-11)<a class="headerlink" href="#v0-2-5-2019-06-11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git support</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init`</span> <span class="pre">in</span> <span class="pre">``micc</span> <span class="pre">create</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">tag</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="v0-2-4-2019-06-11">
+<h3>v0.2.4 (2019-06-11)<a class="headerlink" href="#v0-2-4-2019-06-11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Makefile improvements:</p>
+<ul>
+<li><p>documentation</p></li>
+<li><p>tests</p></li>
+<li><p>install/uninstall</p></li>
+<li><p>install-dev/uninstall-dev</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="v0-2-3-2019-06-11">
+<h3>v0.2.3 (2019-06-11)<a class="headerlink" href="#v0-2-3-2019-06-11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Using pyproject.toml, instead of the flawed setup.py</p></li>
+<li><p>Proper local install and uninstall. By Local we mean: not installing from PyPI.
+we had that in et/backbone using pip. But pip uses setup.py which we want to
+avoid. There is not pyproject.toml file sofar…</p></li>
+</ul>
+<p>Moving away from setup.py and going down the pyproject.toml road, we can choose
+between <code class="docutils literal notranslate"><span class="pre">poetry</span></code> and <code class="docutils literal notranslate"><span class="pre">flit</span></code>.</p>
+<p>Although, I am having some trouble with reusing some poetry code, i have the
+impression that it is better developed, and has a more active community
+(more watchters, downloads, commits, …)</p>
+<p>A pyproject.toml was added (used <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">init</span></code> to generate pyproject.toml).
+First issue is how to automatically transfer the version number to our python
+project. <a class="reference external" href="https://github.com/sdispater/poetry/issues/273">This is a good post</a>
+about that.</p>
+<ul class="simple">
+<li><p>using pkg_resources implies a dependence on setuptools = no go</p></li>
+<li><p>using tomlkit for reading the pyproject.toml file implies that the
+pyproject.toml file must be included in the distribution of the
+package. Since pyproject.toml is complete unnnecessary for the functioning
+of the module, we’d rather not do that. So, we agree with copying the version
+string from pyproject.toms to the python package (=duplicating). This is
+basically the same strategy as used by
+<a class="reference external" href="https://pypi.org/project/bumpversion/">bumpversion</a>.</p></li>
+<li><p>the command <cite>poetry version …</cite> allows to modify the version string in
+pyproject.toml. In principle we can recycle that code. However, we could not
+get it to work properly (see issue <a class="reference external" href="https://github.com/sdispater/poetry/issues/1182">https://github.com/sdispater/poetry/issues/1182</a>).
+This could probably be circumvented by creating my own fork of poetry.</p>
+<ul>
+<li><p>it is simple to write a hack around this (read the file into a string,
+replace the version line, and write it back. this preserves the formatting
+but in the unlikely case that there is another version string in some toml table
+it will be incorrect.</p></li>
+<li><p>the <a class="reference external" href="https://pypi.org/project/toml/">toml package</a> is much simpler than tomlkit, does
+not cause these problems, but it does not preserve the formatting  of the file.</p></li>
+</ul>
+</li>
+<li><p>poetry itself uses a separate __version__.py file in the package, containing
+nothin but <code class="docutils literal notranslate"><span class="pre">__version__</span> <span class="pre">=</span> <span class="pre">&quot;M.m.p&quot;</span></code>. This is imported in __init__.py as
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.__version__</span> <span class="pre">import</span> <span class="pre">__version__</span></code>. This makes transferring the version
+from pyproject.toml to __version__.py easy.</p></li>
+</ul>
+<p>Let’s first check if we can achieve a proper local install with poetry …
+Install a package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">poetry</span> <span class="n">build</span>
+<span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">dist</span><span class="o">/&lt;</span><span class="n">package</span><span class="o">&gt;-&lt;</span><span class="n">version</span><span class="o">&gt;-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span>
+</pre></div>
+</div>
+<p>Uninstall:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This seems to do the trick:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">&lt;</span><span class="n">project_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Install a dev package use cmd:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">&lt;</span><span class="n">project_dir</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Uninstall:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; rm -r $(find . -name &#39;*.egg-info&#39;)
+</pre></div>
+</div>
+<p>But take care, uninstalling like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>removed the source files.
+See <a class="reference external" href="https://stackoverflow.com/questions/17346619/how-to-uninstall-editable-packages-with-pip-installed-with-e">this post</a>.</p>
+</div>
+<div class="section" id="v0-1-21-2019-06-11">
+<h3>v0.1.21 (2019-06-11)<a class="headerlink" href="#v0-1-21-2019-06-11" title="Permalink to this headline">¶</a></h3>
+<p>first working version</p>
+</div>
+<div class="section" id="v0-0-0-2019-06-06">
+<h3>v0.0.0 (2019-06-06)<a class="headerlink" href="#v0-0-0-2019-06-06" title="Permalink to this headline">¶</a></h3>
+<p>Start of development.</p>
+</div>
+<div class="section" id="open-issues">
+<h3>Open Issues<a class="headerlink" href="#open-issues" title="Permalink to this headline">¶</a></h3>
+<p>#25</p>
+</div>
+</div>
+<div class="section" id="feature-add-indentation-to-logging">
+<h2>#24 [feature] add indentation to logging<a class="headerlink" href="#feature-add-indentation-to-logging" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; micc -p foo create
+
+<span class="o">[</span>INFO<span class="o">]</span> Creating project <span class="o">(</span>foo<span class="o">)</span>:
+       Python package <span class="o">(</span>foo<span class="o">)</span>: <span class="nv">structure</span> <span class="o">=</span> <span class="o">(</span>foo/foo/__init__.py<span class="o">)</span>
+<span class="o">[</span>INFO<span class="o">]</span> Creating git repository
+<span class="o">[</span>INFO<span class="o">]</span> ... <span class="k">done</span>.
+
+<span class="o">[</span>INFO<span class="o">]</span> ... <span class="k">done</span>.
+</pre></div>
+</div>
+<p>should look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; micc -p foo create
+
+<span class="o">[</span>INFO<span class="o">]</span> Creating project <span class="o">(</span>foo<span class="o">)</span>:
+       Python package <span class="o">(</span>foo<span class="o">)</span>: <span class="nv">structure</span> <span class="o">=</span> <span class="o">(</span>foo/foo/__init__.py<span class="o">)</span>
+       ...
+<span class="o">[</span>INFO<span class="o">]</span>     Creating git repository
+           ...
+<span class="o">[</span>INFO<span class="o">]</span>     <span class="k">done</span>.
+<span class="o">[</span>INFO<span class="o">]</span> <span class="k">done</span>.
+</pre></div>
+</div>
+</div>
+<div class="section" id="issue-building-cpp-module-fails-when-pybind11-is-pip-installed">
+<h2>#22 [issue] building cpp module fails when pybind11 is pip-installed<a class="headerlink" href="#issue-building-cpp-module-fails-when-pybind11-is-pip-installed" title="Permalink to this headline">¶</a></h2>
+<p>(at least on a conda environment) it works however when it is conda-installed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>DEBUG    micc-build-cpp_mod4.log:utils.py:295  <span class="o">(</span>stderr<span class="o">)</span>
+                                              CMake Error at CMakeLists.txt:14 <span class="o">(</span>find_package<span class="o">)</span>:
+                                                Could not find a package configuration file provided by <span class="s2">&quot;pybind11&quot;</span> with any
+                                                of the following names:
+
+                                                  pybind11Config.cmake
+                                                  pybind11-config.cmake
+
+                                                Add the installation prefix of <span class="s2">&quot;pybind11&quot;</span> to CMAKE_PREFIX_PATH or <span class="nb">set</span>
+                                                <span class="s2">&quot;pybind11_DIR&quot;</span> to a directory containing one of the above files.  If
+                                                <span class="s2">&quot;pybind11&quot;</span> provides a separate development package or SDK, be sure it has
+                                                been installed.
+</pre></div>
+</div>
+<p>also building an f2py module fails for the same reason.
+conda installs the missing files in <code class="docutils literal notranslate"><span class="pre">~/miniconda3/envs/micc/share/cmake/pybind11</span></code></p>
+</div>
+<div class="section" id="feature-packaging-and-deployment-and-the-use-of-poetry-in-general">
+<h2>#5 [feature] packaging and deployment, and the use of poetry in general<a class="headerlink" href="#feature-packaging-and-deployment-and-the-use-of-poetry-in-general" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://packaging.python.org/guides/">Python Packaging User Guide</a>
+has a section <a class="reference external" href="https://packaging.python.org/guides/packaging-binary-extensions/">Packaging binary extensions</a>,
+with two interesting subsections <a class="reference external" href="https://packaging.python.org/guides/packaging-binary-extensions/#publishing-binary-extensions">Publishing binary extensions</a> and
+<a class="reference external" href="https://packaging.python.org/guides/packaging-binary-extensions/#cross-platform-wheel-generation-with-scikit-build">Cross-platform wheel generation with scikit-build</a>.
+Thus, it seems we are  on the right track as scikit-build is based on CMake, which we
+are using too for building our f2py and C++ binary modules. Unfortunately, the section <a class="reference external" href="https://packaging.python.org/guides/packaging-binary-extensions/#publishing-binary-extensions">Publishing binary extensions</a>
+is broken, as it mentions “For interim guidance on this topic, see the discussion <a class="reference external" href="https://github.com/pypa/packaging.python.org/issues/284">in this issue</a>.”
+There, two interesting links are found:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.benjack.io/2017/06/12/python-cpp-tests.html">Building and testing a hybrid Python/C++ package</a>:
+this is describe a setup.py approach, also based on pybind11 and CMake.</p></li>
+<li><p><a class="reference external" href="https://distutils-cmake.readthedocs.io/en/latest/">cmake-pip</a>: is a simple wrapper around CMake in order to be able
+to have CMake extensions as python modules.</p></li>
+</ul>
+<p>Note that the setup.py approach can become rather convoluted: <a class="reference external" href="https://github.com/zeromq/pyzmq/blob/master/setup.py">https://github.com/zeromq/pyzmq/blob/master/setup.py</a>.</p>
+<p>The <a class="reference external" href="https://github.com/pypa/packaging.python.org/issues/381">scikit-build approach</a> is mentioned .</p>
+<p>These approaches request the user that installs your package to also build the binary Python
+extensions (f2py, C++), which may be challenging on Windows.</p>
+<p>The <a class="reference external" href="https://packaging.python.org/guides/">Python Packaging User Guide</a> suggests <a class="reference external" href="https://www.appveyor.com">Appveyor</a>  , a CI solution,
+for providing windows support: <a class="reference external" href="https://packaging.python.org/guides/supporting-windows-using-appveyor/">https://packaging.python.org/guides/supporting-windows-using-appveyor/</a>.</p>
+<p>how does poetry deal with binary extensions?</p>
+</div>
+<div class="section" id="issue-8-cookiecutter-json-files">
+<h2>issue #8 cookiecutter.json files<a class="headerlink" href="#issue-8-cookiecutter-json-files" title="Permalink to this headline">¶</a></h2>
+<p>These files are written in the template directories of the micc installation. If micc happens to be
+installed in a location where the user has no write access, micc will not work.</p>
+<div class="section" id="closed-issues">
+<h3>Closed Issues<a class="headerlink" href="#closed-issues" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="bug-fileexistserror-in-micc-module">
+<h2>#1 [bug] FileExistsError in micc module<a class="headerlink" href="#bug-fileexistserror-in-micc-module" title="Permalink to this headline">¶</a></h2>
+<p>in v0.5.6:</p>
+<p>The commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="n">module</span> <span class="o">--</span><span class="n">f2py</span> <span class="o">&lt;</span><span class="n">module_name</span><span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">module</span> <span class="o">--</span><span class="n">cpp</span> <span class="o">&lt;</span><span class="n">module_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>generate:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">FileExistsError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">17</span><span class="p">]</span> <span class="n">File</span> <span class="n">exists</span><span class="p">:</span> <span class="s1">&#39;&lt;package_name&gt;/tests&#39;</span>
+</pre></div>
+</div>
+<p>if the flag <code class="docutils literal notranslate"><span class="pre">--overwrite</span></code> is not specified. This behavior is incorrect.
+Only if existing <strong>files</strong> are overwritten an exception must be raised, not
+when a new file is added to an existing directory.</p>
+</div>
+<div class="section" id="feature-add-useful-example-code-to-templates">
+<h2>#3 [feature] add useful example code to templates<a class="headerlink" href="#feature-add-useful-example-code-to-templates" title="Permalink to this headline">¶</a></h2>
+<p>Put more useful example code in</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp_{{cookiecutter.module_name}}/{{cookiecutter.module_name}}.cpp</span></code> -&gt; added in  v0.5.7.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">f2py_{{cookiecutter.module_name}}/{{cookiecutter.module_name}}.f90</span></code></p></li>
+</ul>
+<p>as well as in the corresponding test files.</p>
+<p>v0.5.10</p>
+</div>
+<div class="section" id="bug-build-commands-for-f2py-and-cpp-modules">
+<h2>#4 [bug] build commands for f2py and cpp modules<a class="headerlink" href="#bug-build-commands-for-f2py-and-cpp-modules" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;/Makefile</span></code> contains wrong builder for f2py modules and no builder for
+cpp modules.</p>
+<p>Running CMake build from the ccd ..ommand line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;/</span><span class="n">cpp_</span><span class="o">&lt;</span><span class="n">module_name</span><span class="o">&gt;</span>
+<span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">build_</span>
+<span class="o">&gt;</span> <span class="n">cd</span> <span class="n">build_</span>
+<span class="o">&gt;</span> <span class="n">cmake</span> <span class="n">CMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">RELEASE</span> <span class="o">..</span>
+<span class="o">&gt;</span> <span class="n">make</span>
+</pre></div>
+</div>
+<p>Then, either copy the <code class="docutils literal notranslate"><span class="pre">.so</span></code> file to <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;</span></code>, or make a softlink.
+A <em>simple package</em> (feature #2) should have simple documentation, and complete documentation when
+converted to a full blown package.</p>
+</div>
+<div class="section" id="feature-11-add-log-files-to-micc-build">
+<h2>feature #11 add log files to <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">build</span></code><a class="headerlink" href="#feature-11-add-log-files-to-micc-build" title="Permalink to this headline">¶</a></h2>
+<p>controlling the output with verbose is not sufficient. If one of the build commands fails we want
+to print all output for building that module. that’s hard to control with verbose.</p>
+</div>
+<div class="section" id="issue-9-prohibit-creation-of-a-micc-project-under-another-project">
+<h2>issue #9 prohibit creation of a micc project under another project<a class="headerlink" href="#issue-9-prohibit-creation-of-a-micc-project-under-another-project" title="Permalink to this headline">¶</a></h2>
+<p>This implies asserting that none of the parent directories of the output directory
+is a project directory (in <code class="docutils literal notranslate"><span class="pre">micc_create_simple</span></code> and <code class="docutils literal notranslate"><span class="pre">micc_create_general</span></code></p>
+</div>
+<div class="section" id="issue-7-cookiecutter-json-files-are-temporary">
+<h2>issue #7 cookiecutter.json files are temporary<a class="headerlink" href="#issue-7-cookiecutter-json-files-are-temporary" title="Permalink to this headline">¶</a></h2>
+<p>While workin on issue #2 I realized that these are in fact temporary files, which do neither belong
+in the template directories (although cookiecutter requires them). It is better to remove these files
+when cookiecutter is done.</p>
+<p>v0.5.11</p>
+</div>
+<div class="section" id="feature-simple-python-project">
+<h2>#2 [feature] simple python project<a class="headerlink" href="#feature-simple-python-project" title="Permalink to this headline">¶</a></h2>
+<p>add <code class="docutils literal notranslate"><span class="pre">--simple</span></code> flag to <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">create</span></code> to create a simple (=unnested) python module <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;.py</span></code>
+instead of the nested <code class="docutils literal notranslate"><span class="pre">&lt;package_name/&gt;__init__.py</span></code>
+a <em>simple</em> package should be convertible to a normal package</p>
+<p>v0.5.13</p>
+</div>
+<div class="section" id="issue-12-common-items-in-micc-json-files">
+<h2>issue #12 common items in micc.json files<a class="headerlink" href="#issue-12-common-items-in-micc-json-files" title="Permalink to this headline">¶</a></h2>
+<p>While workin on issue #2 I realized that there are now several <code class="docutils literal notranslate"><span class="pre">micc.json`</span> <span class="pre">files</span> <span class="pre">with</span> <span class="pre">common</span>
+<span class="pre">items</span> <span class="pre">which</span> <span class="pre">are</span> <span class="pre">in</span> <span class="pre">fact</span> <span class="pre">copies.</span> <span class="pre">we</span> <span class="pre">need</span> <span class="pre">either</span> <span class="pre">a</span> <span class="pre">single</span> <span class="pre">``micc.json</span></code> or a way of isolating
+the common parts in a single file.
+Fixed by itself. If there are multiple templates, every new template adds parameters to the original.</p>
+</div>
+<div class="section" id="feature-os-path-pathlib">
+<h2>#13 [feature] os.path -&gt; pathlib<a class="headerlink" href="#feature-os-path-pathlib" title="Permalink to this headline">¶</a></h2>
+<p>more obvious manipulation of file paths</p>
+</div>
+<div class="section" id="feature-add-flag-for-nesting-a-project-inside-another-project">
+<h2>#14 [feature] add flag for nesting a project inside another project<a class="headerlink" href="#feature-add-flag-for-nesting-a-project-inside-another-project" title="Permalink to this headline">¶</a></h2>
+<p>mainly for running tests.</p>
+</div>
+<div class="section" id="feature-decomposition">
+<h2>#6 [feature] decomposition<a class="headerlink" href="#feature-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>maybe it is usefull to limit the number of files in the <a class="reference external" href="https://github.com/audreyr/cookiecutter">cookiecutter</a> templates. For now even the
+simples project contains 11 <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files. For a beginner that may be too much to grasp. Maybe it is ]
+usefull to start with a <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> only and have a <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">doc</span> <span class="pre">[options]</span></code> command that adds documentation
+topics one at a time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="n">doc</span> <span class="o">--</span><span class="n">authors</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">doc</span> <span class="o">--</span><span class="n">changelog</span><span class="o">|-</span><span class="n">c</span> <span class="c1"># or</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">doc</span> <span class="o">--</span><span class="n">history</span><span class="o">|-</span><span class="n">h</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">doc</span> <span class="o">--</span><span class="n">api</span><span class="o">|-</span><span class="n">a</span>
+<span class="o">&gt;</span> <span class="n">micc</span> <span class="n">doc</span> <span class="o">--</span><span class="n">installation</span><span class="o">|-</span><span class="n">i</span>
+</pre></div>
+</div>
+<p>this is perhaps useful, but rather more complicated. E.g if we first create a package with several
+modules (python, f2py, cpp) and then start to add documentation. This is a more complicated situation
+and one in which errors will be easily made, and more difficult to maintain.</p>
+</div>
+<div class="section" id="issue-10-micc-files-are-part-of-the-template">
+<h2>issue #10 micc files are part of the template<a class="headerlink" href="#issue-10-micc-files-are-part-of-the-template" title="Permalink to this headline">¶</a></h2>
+<p>So they better live there.</p>
+<p>v0.6.2</p>
+</div>
+<div class="section" id="issue-poetry-1-0-0b1-uses-different-cleo-than-0-12-17">
+<h2>#16 [issue] poetry 1.0.0b1 uses different cleo than 0.12.17<a class="headerlink" href="#issue-poetry-1-0-0b1-uses-different-cleo-than-0-12-17" title="Permalink to this headline">¶</a></h2>
+<p>this break our code for retrieving the current version number.</p>
+</div>
+<div class="section" id="issue-using-poetry-bumping-the-version-in-pyproject-toml">
+<h2>#15 [issue] using poetry bumping the version in pyproject.toml<a class="headerlink" href="#issue-using-poetry-bumping-the-version-in-pyproject-toml" title="Permalink to this headline">¶</a></h2>
+<p>currently we do this by using poetry’s source code (import). As poetry recommends a singly
+installation of poetry system-wide, this adds an extra dependency (i.e. poetry itself) on
+top of the single installation. There is no way of guaranteeing that both versions are the
+same. Ideally, we would rely on only the system version of poetry.</p>
+</div>
+<div class="section" id="issue-avoiding-poetry">
+<h2>#19 [issue] avoiding poetry<a class="headerlink" href="#issue-avoiding-poetry" title="Permalink to this headline">¶</a></h2>
+<p>Poetry is currently used for bumping versions only. As poetry does not play well with conda,
+(see issue #18) relying on poetry (and therefore adding it as a dependency of micc) is a ticking time bomb
+because when poetry is there users will use it, even if it is documented that it does not work.
+So i propose to use bump(2)version for bumping versions by default. This will always work well
+with Anaconda Python versions.</p>
+<p>interesting links:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/peritus/bumpversion">https://github.com/peritus/bumpversion</a></p></li>
+<li><p><a class="reference external" href="https://github.com/c4urself/bump2version">https://github.com/c4urself/bump2version</a></p></li>
+<li><p><a class="reference external" href="https://blog.developer.atlassian.com/bumpversion-is-automation-for-semantic-versioning">https://blog.developer.atlassian.com/bumpversion-is-automation-for-semantic-versioning</a></p></li>
+</ul>
+</div>
+<div class="section" id="issue-micc-create">
+<h2>#21 [issue] micc create<a class="headerlink" href="#issue-micc-create" title="Permalink to this headline">¶</a></h2>
+<p>raises exception (cannot create project inside another project) when run from a project
+directory with a relative path. E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">micc</span><span class="o">/</span> <span class="o">&gt;</span> <span class="n">micc</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>fails when given the path ../foo although this would be created in <code class="docutils literal notranslate"><span class="pre">~/path/to/soep</span></code>.</p>
+</div>
+<div class="section" id="issue-install-dependencies-in-current-conda-environment">
+<h2>#20 [issue] install dependencies in current conda environment<a class="headerlink" href="#issue-install-dependencies-in-current-conda-environment" title="Permalink to this headline">¶</a></h2>
+<p>As poetry build works, and pip install dist/&lt;wheel&gt; too, even in a conda python
+environment, this is no longer an issue,.</p>
+</div>
+<div class="section" id="issue-two-tools-for-reading-writing-toml-files">
+<h2>#18 [issue] two tools for reading/writing toml files<a class="headerlink" href="#issue-two-tools-for-reading-writing-toml-files" title="Permalink to this headline">¶</a></h2>
+<p>Currently, we are using both tomlkit and toml for reading and writing toml files.
+Better stick to one.</p>
+</div>
+<div class="section" id="issue-poetry-1-0-0b1-does-not-play-well-with-conda">
+<h2>#17 [issue] poetry 1.0.0b1 does not play well with conda<a class="headerlink" href="#issue-poetry-1-0-0b1-does-not-play-well-with-conda" title="Permalink to this headline">¶</a></h2>
+<p>Poetry made me a virtual environment for micc, based on <code class="docutils literal notranslate"><span class="pre">miniconda3</span></code>’s active python version
+(which was 3.7.3). However, it did not pickup the correct python standard library (used 3.6.whatever
+instead), obviously a nightmare. Thus, if we want to use poetry, we must use a non-conda Python, or
+if we want to use conda python versions, we must refrain from poetry.
+solved: only <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> does not work well with a conda python environment,
+<code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">build</span></code> does fine</p>
+</div>
+<div class="section" id="issue-remove-interactivity-from-micc-app-and-micc-module">
+<h2>#23 [issue] remove interactivity from micc app and micc module<a class="headerlink" href="#issue-remove-interactivity-from-micc-app-and-micc-module" title="Permalink to this headline">¶</a></h2>
+<p>behavior is now steered with flags.
+default behavior is abort if pre-existing files would be overwritten.</p>
+<div class="section" id="todo">
+<h3>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>check for a the presence of a global CMake or add it as a dev dependency
+in pyproject.toml.</p></li>
+<li><p>update tutorial 7</p></li>
+<li><p>move <code class="docutils literal notranslate"><span class="pre">LINKS.rst</span></code> to a separate git repo (it changes too often)</p></li>
+<li><p>add a remove command for removing a component of a <a class="reference external" href="https://micc.readthedocs.io/en/master/">micc</a> project
+see <a class="reference external" href="https://github.com/etijskens/et-micc/issues/32">https://github.com/etijskens/et-micc/issues/32</a></p></li>
+<li><p>add a rename command for renaming a component of a <a class="reference external" href="https://micc.readthedocs.io/en/master/">micc</a> project or the project itself.
+see <a class="reference external" href="https://github.com/etijskens/et-micc/issues/29">https://github.com/etijskens/et-micc/issues/29</a></p></li>
+<li><p>Put makefile targets into micc commands and remove micc/makefile? This
+makes a more uniform interface. Use subprocess or lrcmd for this?</p></li>
+<li><p>Fortran compiler options (while using f2py): is <code class="docutils literal notranslate"><span class="pre">-O3</span></code> enough?</p></li>
+<li><p>allow for multiple Fortran/C++ source files?</p></li>
+<li><p>how to add external projects for f2py and C++ modules (include files,
+libraries)?</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>this was fixed for C++ by using the CMake framework</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>check <a class="reference external" href="https://github.com/tbenthompson/cppimport">cppimport</a></p></li>
+<li><p>undo <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">app</span> <span class="pre">...</span></code>?</p></li>
+<li><p>undo <code class="docutils literal notranslate"><span class="pre">micc</span> <span class="pre">module</span> <span class="pre">...</span></code>?</p></li>
+<li><p>check if project_name exists already on <a class="reference external" href="https://readthedocs.org/">readthedocs</a> or <a class="reference external" href="https://pypi.org/">pypi</a>. If not
+abort and print a message that suggests to use a different name, or to create
+the project anyway by using <code class="docutils literal notranslate"><span class="pre">--force</span></code>.</p></li>
+<li><p>remove dependency on <a class="reference external" href="https://pypi.org/project/toml/">toml</a> in favor of
+<a class="reference external" href="https://pypi.org/project/tomlkit/">tomlkit</a> which comes with poetry.
+(now that we are fixed poetry issue #1182)</p></li>
+<li><p>regression tests</p></li>
+<li><p>Reflect about “do we really need poetry? (see below)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="poetry-considerations">
+<h2>Poetry considerations<a class="headerlink" href="#poetry-considerations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What are we using <a class="reference external" href="https://poetry.eustace.io/">poetry</a> for?</p></li>
+<li><p>Do we really need it?</p></li>
+<li><p>Maybe we should wait a bit for poetry to mature, before we start building our
+micc project around it.</p></li>
+<li><p>Maybe we should decouple micc and <a class="reference external" href="https://poetry.eustace.io/">poetry</a>?</p></li>
+<li><p>Maybe we should still use <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> rather than <a class="reference external" href="https://poetry.eustace.io/">poetry</a> because it is
+well established?</p></li>
+</ul>
+<p>There is a poetry issue on poetry+anaconda python
+<a class="reference external" href="https://github.com/sdispater/poetry/issues/190">Any plans to make it work with anaconda python?</a>.
+Locally, we are completely relying on Anaconda Python.
+Consequentially, I am not completely feeling comfortable with <cite>poetry`_</cite> - but it is
+very actively developed.</p>
+<p>Anaconda Python used to be very convenient, but maybe the standard python+pip+virtualenv is good
+enough today? One advantage anaconda python still has is that its numpy
+well aligned numpy arrays which is in favor of vectorization.</p>
+<p>So far we use <a class="reference external" href="https://poetry.eustace.io/">poetry</a> for:</p>
+<ul>
+<li><p><strong>building wheels</strong> (which are used for installing and publishing):
+<code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">build</span></code>, typically inside the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. However, I haven’t
+figured out how to go with e.g. f2py modules and C++ modules.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">poetry.console.commands.VersionCommand</span></code> for <strong>updating version strings</strong></p></li>
+<li><dl class="simple">
+<dt>we are not using</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to create a virtual environment</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">run</span> <span class="pre">...</span></code> to run code in that virtual environment</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>We could use <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to create a virtual environment and
+point to it in eclipse/pydev so that we will always run our code in that
+environment</p></li>
+<li><p>tests should probably be run as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">poetry</span> <span class="n">run</span> <span class="n">pytest</span> <span class="n">tests</span><span class="o">/</span><span class="n">test</span><span class="o">*</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="development-plan">
+<h2>Development plan<a class="headerlink" href="#development-plan" title="Permalink to this headline">¶</a></h2>
+<p>What do we actually need?</p>
+<ul>
+<li><p>a standardized development environment</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>click : for command line interfaces</p></li>
+<li><p>sphinx : for documentation</p></li>
+<li><p>pytest : for running tests</p></li>
+<li><p>flake8 : for assuring PEP 8 compatibility</p></li>
+<li><p>cookiecutter : if we want sth based on existing templates</p></li>
+<li><p>tox ?</p></li>
+<li><p>poetry?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>a standardized way of creating projects for packages and apps.</p></li>
+<li><p>automation of project management tasks, e.g. CI, publishing, …</p></li>
+</ul>
+<p>This package was inspired by
+<a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a>.</p>
+<p>Inspiration for the project templates came from:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">audreyr/cookiecutter-pypackage</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jacebrowning/template-python">jacebrowning/template-python</a></p></li>
+</ul>
+<p>Interesting posts:</p>
+<ul class="simple">
+<li><p>Here is a particularly readable and concise text about packaging
+<a class="reference external" href="https://stefanoborini.com/current-status-of-python-packaging/">Current State of Python Packaging - 2019</a>
+(Pycoder’s weekly #372 june 11, by Stefano Borini). The bottom line is: use
+<a class="reference external" href="https://poetry.eustace.io/">poetry</a>. After reading (just part) of the documentation
+I concluded that poetry solves a lot project management issues in an elegant way.
+I am likely to become addicted :).</p></li>
+<li><p>version numbers: adhere to <a class="reference external" href="https://semver.org">Semantic Versioning</a></p></li>
+</ul>
+</div>
+<div class="section" id="think-big-start-small">
+<h2>Think big, start small…<a class="headerlink" href="#think-big-start-small" title="Permalink to this headline">¶</a></h2>
+<p>Maybe it is a good idea to get everything going locally + github, and add
+features such as:</p>
+<ul class="simple">
+<li><p>readthedocs,</p></li>
+<li><p>publishing to pypi,</p></li>
+<li><p>travis,</p></li>
+<li><p>pyup,</p></li>
+<li><p>…,</p></li>
+</ul>
+<p>incrementally.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="authors.html" class="btn btn-neutral float-left" title="Authors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Engelbert Tijskens
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

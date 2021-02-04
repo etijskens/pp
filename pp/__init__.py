@@ -7,6 +7,8 @@ Package pp
 Top-level package for pp.
 """
 
+import pp.cli_pp
+import pp.cli_pp
 __version__ = "0.0.0"
 
 
