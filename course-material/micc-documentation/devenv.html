@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Development environment &mdash; et_micc 1.0.18 documentation</title>
+  <title>Development environment &mdash; et_micc 1.0.19 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.0.18
+                1.0.19
               </div>
             
           
@@ -186,8 +186,13 @@ cluster. They are described in detail in <a class="reference internal" href="tut
 developers, and, consequentially, with Linux systems in mind. We provide support for Linux
 (Ubuntu 19.10, CentOS 7.7), and macOS. Due to lack of human resources, it has not been
 tested on Windows, and no support is provided for it. However,
-<a class="reference external" href="https://pbpython.com/wsl-python.html">WSL-2</a> may do the trick on Windows.</p>
+<a class="reference external" href="https://pbpython.com/wsl-python.html">WSL-2</a> may do the trick on Windows. Any feedback
+is welcome</p>
 </div>
+<p>If you want to experiment with micc without having to setup the environment, You can download
+anb Ubuntu 20.10 virtual machine for VirtualBox with everything pre-installed at
+<a class="reference external" href="https://calcua.uantwerpen.be/courses/parallel-programming/ubuntu-20.10.ova">https://calcua.uantwerpen.be/courses/parallel-programming/ubuntu-20.10.ova</a>. It has a userid
+<code class="docutils literal notranslate"><span class="pre">user</span></code> with password <code class="docutils literal notranslate"><span class="pre">calcua&#64;ua</span></code>.</p>
 <p>For Python development on your local machine, we highly recommend to set up your development
 environment as described in
 <a class="reference external" href="https://jacobian.org/2019/nov/11/python-environment-2020/">My Python Development Environment</a>
@@ -301,7 +306,21 @@ You can download <a class="reference external" href="https://cmake.org">CMake</a
 <li><p>Install an IDE. For many years I have been using <a class="reference external" href="https://www.eclipse.org/downloads/packages/release/photon/rc2/eclipse-ide-scientific-computing">Eclipse IDE for Scientific Computing</a>
 with the <a class="reference external" href="https://pydev.org">PyDev</a> plugin,  but recently I became addicted to
 <a class="reference external" href="https://www.jetbrains.com/pycharm/download">PyCharm Community Edition</a>. Both are available for MacOS, Linux and Windows.</p></li>
-<li><p>Create a git account at &lt;<a class="reference external" href="https://github.com">https://github.com</a>&gt;/join/.</p></li>
+<li><p>Create a git account at <a class="reference external" href="https://github.com">https://github.com</a>&gt;/join/. Also
+<a class="reference external" href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">create a personal access token</a>
+At point 7 check at least these boxes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>repo</p></li>
+<li><p>read:org</p></li>
+</ul>
+</div></blockquote>
+<p>At point 9 copy the toke to the clipboard and paste it in <code class="file docutils literal notranslate"><span class="pre">~/.pat.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">echo</span> <span class="n">shift</span><span class="o">+</span><span class="n">ctrl</span><span class="o">+</span><span class="n">V</span> <span class="o">&gt;</span> <span class="o">~/.</span><span class="n">pat</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/etijskens/et-micc">Micc</a> uses this file to automatically create a GitHub repo for your <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> projects.</p>
+</li>
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">git</span></code> (<a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a>) and
 the github cli <code class="docutils literal notranslate"><span class="pre">gh</span></code> (<a class="reference external" href="https://github.com/cli/cli#installation">https://github.com/cli/cli#installation</a>).</p></li>
 <li><p>Create your first <a class="reference external" href="https://github.com/etijskens/et-micc">micc</a> project. The very first time, you will be asked to set some default

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>et_micc.project &mdash; et_micc 1.0.18 documentation</title>
+  <title>et_micc.project &mdash; et_micc 1.0.19 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                1.0.18
+                1.0.19
               </div>
             
           
@@ -355,13 +355,19 @@
                             <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;.gitignore&#39;</span><span class="p">]</span>
                             <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;commit&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;And so this begun...&quot;&#39;</span><span class="p">]</span>
                         <span class="p">]</span>
-                        <span class="k">if</span> <span class="n">template_parameters</span><span class="p">[</span><span class="s1">&#39;github_username&#39;</span><span class="p">]:</span>
-                            <span class="n">github_username</span> <span class="o">=</span> <span class="n">template_parameters</span><span class="p">[</span><span class="s1">&#39;github_username&#39;</span><span class="p">]</span>
+                        <span class="n">github_username</span> <span class="o">=</span> <span class="n">template_parameters</span><span class="p">[</span><span class="s1">&#39;github_username&#39;</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">github_username</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">remote</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                             <span class="n">pat_file</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;.pat.txt&#39;</span>
                             <span class="k">if</span> <span class="n">pat_file</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
                                 <span class="n">cmds</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;gh&#39;</span><span class="p">,</span> <span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="s1">&#39;--with-token&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">pat_file</span><span class="p">)])</span>
-                                <span class="n">cmds</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;gh&#39;</span><span class="p">,</span> <span class="s1">&#39;repo&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;--private&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">private</span> <span class="k">else</span> <span class="s1">&#39;--public&#39;</span><span class="p">),</span> <span class="s1">&#39;-y&#39;</span><span class="p">])</span>
+                                <span class="n">cmds</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;gh&#39;</span><span class="p">,</span> <span class="s1">&#39;repo&#39;</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_name</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;--</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">remote</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span><span class="p">])</span>
                                 <span class="n">cmds</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;push&#39;</span><span class="p">,</span> <span class="s1">&#39;-u&#39;</span><span class="p">,</span> <span class="s1">&#39;origin&#39;</span><span class="p">,</span> <span class="s1">&#39;master&#39;</span><span class="p">])</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unable to access your GitHub account: file &#39;~/.pat.txt&#39; not found.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                                  <span class="s2">&quot;Remote repository not created.&quot;</span>
+                                                 <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Not creating remote GitHub repository &quot;</span><span class="p">)</span>
                         <span class="n">et_micc</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">cmds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span> <span class="n">stop_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
