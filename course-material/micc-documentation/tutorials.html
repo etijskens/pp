@@ -181,11 +181,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#using-micc-on-the-cluster">6.2 Using Micc on the cluster</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#python-and-python-packages">6.2.1 Python and Python packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-poetry">6.2.2 Using Poetry</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">6.2.3 Creating virtual environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-management-of-virtual-environments-and-dependencies">6.2.3 Manual management of virtual environments and dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#installing-dependencies">6.2.4 Installing dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#access-to-compilers">6.2.5 Access to compilers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">6.2.6 CMake</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">6.2.6 Git</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">6.2.6 CMake</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">6.2.6 Git</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-remark-on-the-order-of-things">6.2.7 a remark on the order of things</a></li>
 </ul>
 </li>
@@ -3401,16 +3401,47 @@ packages are in a separate module:</p>
 <div class="section" id="using-poetry">
 <h4>6.2.2 Using Poetry<a class="headerlink" href="#using-poetry" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="https://python-poetry.org/">Poetry</a> is, sofar, not available as a cluster module. If you insist on having it, you have
-to install it yourself. Poetry wants to install itself only in <code class="file docutils literal notranslate"><span class="pre">$HOME/.poetry/bin</span></code>
-which is in the <code class="file docutils literal notranslate"><span class="pre">$VSC_USER</span></code> filesytem where the file quota are a bit restrictive for
-such installations. (It consumes more than 50% of your allowed number of files).
-A more serious problem is that we noticed problems with dependency resolution. Poetry tends to
-reinstall Python modules that are already installed as system site packages. This is not only a
-waste of disk space, it replaces modules that are carefully compiled for optimal performance on
-the cluster hardware, e.g. <a class="reference external" href="https://numpy.org">Numpy</a>, with standard compilations causing performance losses.
-This is unacceptable. As a consequence we strongly advise against the use of poetry on
-the VSC clusters, as long as <a class="reference external" href="https://python-poetry.org/">Poetry</a> fails to use system site packages. The consequences
-of refraining from <a class="reference external" href="https://python-poetry.org/">Poetry</a> are not to hard:</p>
+to install it yourself. On a VSC cluster this can best be done like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; module load IntelPython3
+&gt; export POETRY_HOME=$VSC_DATA/.poetry
+&gt; curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+&gt; source /data/antwerpen/201/vsc20170/.poetry/env
+</pre></div>
+</div>
+<p>This installs <a class="reference external" href="https://python-poetry.org/">poetry</a> in your $VSC_DATA file system, rather than  in <code class="file docutils literal notranslate"><span class="pre">$HOME/.poetry/bin</span></code>
+where it would consume to much of your file quota. If the system’s Python is Python 3.x, rather
+than 2.7.x, the first line is not necessary. The last line makes sure the current shell can use
+<code class="docutils literal notranslate"><span class="pre">poetry</span></code> right away.</p>
+<p>A more serious problem is that Poetry doesn’t play well with the system site-packages. There are
+two issues.</p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> fails unless we create the virtual environment ourselves wiht the
+<code class="docutils literal notranslate"><span class="pre">--system-site-packages</span></code> flag. Poetry will then use <code class="file docutils literal notranslate"><span class="pre">.venv</span></code> (if it is activated):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+<span class="o">&gt;</span> <span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">poetry</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+<li><p>The second issue is that poetry will install newer versions of the system site packages
+(in <code class="file docutils literal notranslate"><span class="pre">.venv</span></code> if it finds any. In general that will cause no problems. However, some of
+the system site packages have been built with special attention to performance because they
+are heavily used for scientific computation. One such package is numpy, which is a dependency
+of micc-build. E.g. the above <code class="file docutils literal notranslate"><span class="pre">IntelPython3</span></code> module has numpy 1.18.5 pre-installed as a
+system site package. Unfortunately, <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> ignores its presence and installs a more
+recent version (c.q. 1.20.1), but this lack the performance optimisation features of the pre-
+installed version. To make use of the pre-installed numpy, we must manually remove the newer
+version installed in the virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="n">numpy</span>
+</pre></div>
+</div>
+<p>This will remove numpy 1.20.1, and any references to numpy will now make use of the pre-installed
+numpy 1.18.5.</p>
+</li>
+</ol>
+<p>Admittedly, this approach is not very elegant, but it is expected that the <a class="reference external" href="https://python-poetry.org/">poetry</a> developers
+will solve this problem some day. If the approach above does not suit you, you can go on without
+using poetry, as explained below. The consequences of refraining from <a class="reference external" href="https://python-poetry.org/">Poetry</a> are not to hard:</p>
 <ul class="simple">
 <li><p>we must create our virtual environments ourselves,</p></li>
 <li><p>we must manually install required Python modules that are not available in the system
@@ -3421,8 +3452,8 @@ site packages,</p></li>
 check out the project on a desktop or laptop to publish it with Poetry. For the other two issues
 a simple workaround is presented below:</p>
 </div>
-<div class="section" id="id10">
-<h4>6.2.3 Creating virtual environments<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="manual-management-of-virtual-environments-and-dependencies">
+<h4>6.2.3 Manual management of virtual environments and dependencies<a class="headerlink" href="#manual-management-of-virtual-environments-and-dependencies" title="Permalink to this headline">¶</a></h4>
 <p>Since for this we cannot rely on poetry, we must do it manually. This command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 </pre></div>
@@ -3491,8 +3522,8 @@ Intel 2020a compiler toolchain so we must load:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<h4>6.2.6 CMake<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h4>6.2.6 CMake<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p>CMake is available as a cluster module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">module</span> <span class="n">load</span> <span class="n">CMake</span>
 <span class="o">&gt;</span> <span class="n">module</span> <span class="nb">list</span>
@@ -3513,8 +3544,8 @@ Intel 2020a compiler toolchain so we must load:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id12">
-<h4>6.2.6 Git<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>6.2.6 Git<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>As said, git too is available as a cluster module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">module</span> <span class="n">load</span> <span class="n">git</span>
 <span class="o">&gt;</span> <span class="n">module</span> <span class="nb">list</span>
