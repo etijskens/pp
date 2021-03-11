@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>et_micc.project &mdash; et_micc 1.0.20 documentation</title>
+  <title>et_micc.project &mdash; et_micc 1.1.1 documentation</title>
   
 
   
@@ -57,7 +57,7 @@
             
             
               <div class="version">
-                1.0.20
+                1.1.1
               </div>
             
           
@@ -802,6 +802,11 @@
                                     <span class="p">,</span> <span class="s1">&#39;f90_&#39;</span> <span class="o">+</span> <span class="n">module_name</span>
                                     <span class="p">,</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">&#39;.f90&#39;</span>
                                     <span class="p">)</span>
+            <span class="n">cmk_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="o">.</span><span class="n">name</span>
+                                    <span class="p">,</span> <span class="n">package_name</span>
+                                    <span class="p">,</span> <span class="s1">&#39;f90_&#39;</span> <span class="o">+</span> <span class="n">module_name</span>
+                                    <span class="p">,</span> <span class="s1">&#39;CMakeLists.txt&#39;</span>
+                                    <span class="p">)</span>
             <span class="n">tst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="o">.</span><span class="n">name</span>
                                     <span class="p">,</span> <span class="s1">&#39;tests&#39;</span>
                                     <span class="p">,</span> <span class="s1">&#39;test_f90_&#39;</span> <span class="o">+</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span>
@@ -813,6 +818,7 @@
                                     <span class="p">,</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">&#39;.rst&#39;</span>
                                     <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Fortran source in       </span><span class="si">{</span><span class="n">src_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- build settings in       </span><span class="si">{</span><span class="n">cmk_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Python test code in     </span><span class="si">{</span><span class="n">tst_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- module documentation in </span><span class="si">{</span><span class="n">rst_file</span><span class="si">}</span><span class="s2"> (restructuredText format).&quot;</span><span class="p">)</span>
 
@@ -877,6 +883,11 @@
                                     <span class="p">,</span> <span class="s1">&#39;cpp_&#39;</span> <span class="o">+</span> <span class="n">module_name</span>
                                     <span class="p">,</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">&#39;.cpp&#39;</span>
                                     <span class="p">)</span>
+            <span class="n">cmk_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="o">.</span><span class="n">name</span>
+                                    <span class="p">,</span> <span class="n">package_name</span>
+                                    <span class="p">,</span> <span class="s1">&#39;cpp_&#39;</span> <span class="o">+</span> <span class="n">module_name</span>
+                                    <span class="p">,</span> <span class="s1">&#39;CMakeLists.txt&#39;</span>
+                                    <span class="p">)</span>
             <span class="n">tst_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">project_path</span><span class="o">.</span><span class="n">name</span>
                                     <span class="p">,</span> <span class="s1">&#39;tests&#39;</span>
                                     <span class="p">,</span> <span class="s1">&#39;test_cpp_&#39;</span> <span class="o">+</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span>
@@ -888,6 +899,7 @@
                                     <span class="p">,</span> <span class="n">module_name</span> <span class="o">+</span> <span class="s1">&#39;.rst&#39;</span>
                                     <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- C++ source in           </span><span class="si">{</span><span class="n">src_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- build settings in       </span><span class="si">{</span><span class="n">cmk_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Python test code in     </span><span class="si">{</span><span class="n">tst_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- module documentation in </span><span class="si">{</span><span class="n">rst_file</span><span class="si">}</span><span class="s2"> (restructuredText format).&quot;</span><span class="p">)</span>
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorials &mdash; et_micc 1.0.20 documentation</title>
+  <title>Tutorials &mdash; et_micc 1.1.1 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.0.20
+                1.1.1
               </div>
             
           
@@ -177,7 +177,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#tutorial-6-using-micc-projects-on-the-vsc-clusters">Tutorial 6 - Using micc projects on the VSC clusters</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#accessing-the-cluster">6.1 Accessing the cluster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-modules">6.2 Using modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-clusterr-modules">6.2 Using clusterr modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-micc-on-the-cluster">6.2 Using Micc on the cluster</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#python-and-python-packages">6.2.1 Python and Python packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#using-poetry">6.2.2 Using Poetry</a></li>
@@ -186,7 +186,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#access-to-compilers">6.2.5 Access to compilers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id10">6.2.6 CMake</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">6.2.6 Git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-remark-on-the-order-of-things">6.2.7 a remark on the order of things</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-remark-on-the-order-of-things">6.2.7 A remark on the order of things</a></li>
 </ul>
 </li>
 </ul>
@@ -1970,6 +1970,7 @@ dot product, say <code class="docutils literal notranslate"><span class="pre">do
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">micc</span> <span class="n">add</span> <span class="n">dotf</span> <span class="o">--</span><span class="n">f90</span>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span>           <span class="p">[</span> <span class="n">Adding</span> <span class="n">f90</span> <span class="n">module</span> <span class="n">dotf</span> <span class="n">to</span> <span class="n">project</span> <span class="n">ET</span><span class="o">-</span><span class="n">dot</span><span class="o">.</span>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span>               <span class="o">-</span> <span class="n">Fortran</span> <span class="n">source</span> <span class="ow">in</span>       <span class="n">ET</span><span class="o">-</span><span class="n">dot</span><span class="o">/</span><span class="n">et_dot</span><span class="o">/</span><span class="n">f90_dotf</span><span class="o">/</span><span class="n">dotf</span><span class="o">.</span><span class="n">f90</span><span class="o">.</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span>               <span class="o">-</span> <span class="n">Build</span> <span class="n">settings</span> <span class="ow">in</span>       <span class="n">ET</span><span class="o">-</span><span class="n">dot</span><span class="o">/</span><span class="n">et_dot</span><span class="o">/</span><span class="n">f90_dotf</span><span class="o">/</span><span class="n">CMakeLists</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span>               <span class="o">-</span> <span class="n">Python</span> <span class="n">test</span> <span class="n">code</span> <span class="ow">in</span>     <span class="n">ET</span><span class="o">-</span><span class="n">dot</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_f90_dotf</span><span class="o">.</span><span class="n">py</span><span class="o">.</span>
 <span class="p">[</span><span class="n">INFO</span><span class="p">]</span>               <span class="o">-</span> <span class="n">module</span> <span class="n">documentation</span> <span class="ow">in</span> <span class="n">ET</span><span class="o">-</span><span class="n">dot</span><span class="o">/</span><span class="n">et_dot</span><span class="o">/</span><span class="n">f90_dotf</span><span class="o">/</span><span class="n">dotf</span><span class="o">.</span><span class="n">rst</span> <span class="p">(</span><span class="ow">in</span> <span class="n">restructuredText</span> <span class="nb">format</span><span class="p">)</span><span class="o">.</span>
 <span class="p">[</span><span class="n">WARNING</span><span class="p">]</span>            <span class="n">Dependencies</span> <span class="n">added</span><span class="o">.</span> <span class="n">Run</span> \<span class="s1">&#39;poetry update</span><span class="se">\&#39;</span><span class="s1"> to update the project</span><span class="se">\&#39;</span><span class="s1">s virtual environment.</span>
@@ -2322,6 +2323,7 @@ the <code class="docutils literal notranslate"><span class="pre">c</span></code>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; micc add dotc --cpp
 <span class="o">[</span>INFO<span class="o">]</span>           <span class="o">[</span> Adding cpp module dotc to project ET-dot.
 <span class="o">[</span>INFO<span class="o">]</span>               - C++ <span class="nb">source</span> <span class="k">in</span>           ET-dot/et_dot/cpp_dotc/dotc.cpp.
+<span class="o">[</span>INFO<span class="o">]</span>               - build settings <span class="k">in</span>       ET-dot/et_dot/cpp_dotc/CMakeLists.txt.
 <span class="o">[</span>INFO<span class="o">]</span>               - module documentation <span class="k">in</span> ET-dot/et_dot/cpp_dotc/dotc.rst <span class="o">(</span><span class="k">in</span> restructuredText format<span class="o">)</span>.
 <span class="o">[</span>INFO<span class="o">]</span>               - Python <span class="nb">test</span> code <span class="k">in</span>     ET-dot/tests/test_cpp_dotc.py.
 <span class="o">[</span>INFO<span class="o">]</span>           <span class="o">]</span> <span class="k">done</span>.
@@ -2485,11 +2487,11 @@ tests/test_f90_dotf.py .                                                       <
 <blockquote>
 <div><p>The build parameters for our C++ binary extension module are detailed in
 the file <code class="file docutils literal notranslate"><span class="pre">et_dot/cpp_dotc/CMakeLists.txt</span></code>. It contains significantly
-less boilerplate code (which you should not need to touch), and provides
-the same functionality as its counterpart for Fortran binary extension
-modules. By default this file specifies that a release version is to be built.
-Here is the section of <code class="file docutils literal notranslate"><span class="pre">et_dot/cpp_dotc/CMakeLists.txt</span></code> that you might
-want to adjust to your needs:</p>
+less boilerplate code (which you should not need to touch) than for the
+Fortran case, and provides the same functionality as its counterpart for
+Fortran binary extension modules. By default this file specifies that a
+release version is to be built. Here is the section of <code class="file docutils literal notranslate"><span class="pre">et_dot/cpp_dotc/CMakeLists.txt</span></code>
+that you might want to adjust to your needs:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c">###############################################################################</span>
 <span class="c">#################################################### Customization section ####</span>
 <span class="c"># set compiler:</span>
@@ -3146,7 +3148,7 @@ environment in which you install. The source code directories of the binary exte
 modules are installed with the package, but without the binary extensions themselves.
 These must be compiled locally. Fortunately that happens automatically, at least if the
 binary extension were added to the package by <a class="reference external" href="https://micc.readthedocs.io">Micc</a>. When <a class="reference external" href="https://micc.readthedocs.io">Micc</a> adds a binary extension
-to a project, two thing happen:</p>
+to a project, two things happen:</p>
 <ul class="simple">
 <li><p>a dependency on <a class="reference external" href="https://github.com/etijskens/et-micc-build">micc-build</a> is added to the project, and</p></li>
 <li><p>in the top-level module <code class="xref py py-mod docutils literal notranslate"><span class="pre">&lt;package_name&gt;/__init__.py</span></code> a <code class="xref py py-obj docutils literal notranslate"><span class="pre">try-except</span></code>
@@ -3158,7 +3160,7 @@ and there are no syntax errors.</p></li>
 <p>As an example, let us create a project <em>foo</em> with a binary extension module <em>bar</em> written
 in C++</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; micc -p Foo create
-&gt; <span class="nb">cd</span> auto-build
+&gt; <span class="nb">cd</span> Foo
 &gt; micc add bar --cpp
 </pre></div>
 </div>
@@ -3256,8 +3258,8 @@ Happy computing!
 </pre></div>
 </div>
 </div>
-<div class="section" id="using-modules">
-<h3>6.2 Using modules<a class="headerlink" href="#using-modules" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="using-clusterr-modules">
+<h3>6.2 Using clusterr modules<a class="headerlink" href="#using-clusterr-modules" title="Permalink to this headline">¶</a></h3>
 <p>The module system of the <a class="reference external" href="https://vscentrum.be">VSC</a> clusters is explained in the VSC documentation
 <a class="reference external" href="https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/software/software_stack.html#using-the-module-system">Using the module system</a>.</p>
 <p>HPC packages are installed as modules (yet another kind of module) and to make
@@ -3341,7 +3343,7 @@ the available Python versions (the command is case insensitive):</p>
 <p>The tools we need as micc users are, typically:</p>
 <ul class="simple">
 <li><p>a modern Python version, e.g. 3.7 or later.</p></li>
-<li><p>common Python packages for computing, like Numpy, scipy, matplotlib, …</p></li>
+<li><p>common Python packages for computing, like numpy, scipy, matplotlib, …</p></li>
 <li><p>Poetry, for dependency resolution, publishing to <a class="reference external" href="https://pypi.org">PyPI</a> and virtual environment creation</p></li>
 <li><p>compilers for C++ and/or Fortran, for compiling binary extensions.</p></li>
 <li><p>CMake, as the build system for C++ binary extensions.</p></li>
@@ -3412,14 +3414,16 @@ to install it yourself. On a VSC cluster this can best be done like this:</p>
 where it would consume to much of your file quota. If the system’s Python is Python 3.x, rather
 than 2.7.x, the first line is not necessary. The last line makes sure the current shell can use
 <code class="docutils literal notranslate"><span class="pre">poetry</span></code> right away.</p>
-<p>A more serious problem is that Poetry doesn’t play well with the system site-packages. There are
-two issues.</p>
+<p>A more serious problem is that, so far, Poetry doesn’t play well with the system site-packages.
+There are two issues:</p>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> fails unless we create the virtual environment ourselves wiht the
-<code class="docutils literal notranslate"><span class="pre">--system-site-packages</span></code> flag. Poetry will then use <code class="file docutils literal notranslate"><span class="pre">.venv</span></code> (if it is activated):</p>
+<code class="docutils literal notranslate"><span class="pre">--system-site-packages</span></code> flag. Poetry will then use <code class="file docutils literal notranslate"><span class="pre">.venv</span></code> (if it is activated)
+to install the dependencies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span> <span class="o">--</span><span class="n">system</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
 <span class="o">&gt;</span> <span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">poetry</span> <span class="n">install</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 </li>
@@ -3467,11 +3471,18 @@ e.g.. As usual the virtual environment is activated as:</p>
 (.venv) &gt;</p>
 </div></blockquote>
 <p>With the <code class="docutils literal notranslate"><span class="pre">IntelPython3</span></code> and associated packages loaded as above:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">which</span> <span class="n">python</span>
-<span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">antwerpen</span><span class="o">/</span><span class="mi">201</span><span class="o">/</span><span class="n">vsc20170</span><span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">ET</span><span class="o">-</span><span class="n">dot</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
-<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">python</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">7</span> <span class="p">::</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Corporation</span>
-<span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> <span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">.</span><span class="n">venv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">python</span>
+<span class="n">Python</span> <span class="mf">3.7</span><span class="o">.</span><span class="mi">7</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jun</span> <span class="mi">26</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">05</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">03</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="p">]</span> <span class="p">::</span> <span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Corporation</span> <span class="n">on</span> <span class="n">linux</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="n">Intel</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="n">Distribution</span> <span class="k">for</span> <span class="n">Python</span> <span class="ow">is</span> <span class="n">brought</span> <span class="n">to</span> <span class="n">you</span> <span class="n">by</span> <span class="n">Intel</span> <span class="n">Corporation</span><span class="o">.</span>
+<span class="n">Please</span> <span class="n">check</span> <span class="n">out</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">software</span><span class="o">.</span><span class="n">intel</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">en</span><span class="o">-</span><span class="n">us</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">distribution</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span>
+<span class="s1">&#39;1.18.5&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="s1">&#39;/apps/antwerpen/x86_64/centos7/intel-psxe/2020.02/intelpython3/lib/python3.7/site-packages/numpy/__init__.py&#39;</span>
+<span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">python</span></code> executable <code class="docutils literal notranslate"><span class="pre">/data/antwerpen/201/vsc20170/workspace/ET-dot/.venv/bin/python</span></code>
@@ -3481,8 +3492,8 @@ time to be created.</p>
 </div>
 <div class="section" id="installing-dependencies">
 <h4>6.2.4 Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permalink to this headline">¶</a></h4>
-<p>Since we cannot rely on poetry to install the dependencies of our project, we must
-do it ourselves. If you follow the recommended workflow and first develop your project
+<p>Installing the dependencies of our project without <a class="reference external" href="https://python-poetry.org/">Poetry</a>, is easily achieved using
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>. If you follow the recommended workflow and first develop your project
 on your own machine (where you can use <a class="reference external" href="https://python-poetry.org/">poetry</a>), and then port it to the cluster,
 things are really easy:</p>
 <blockquote>
@@ -3497,6 +3508,8 @@ dependencies and run <code class="docutils literal notranslate"><span class="pre
 </ol>
 </div></blockquote>
 <p>You are now ready to test your project on the cluster.</p>
+<p>Being lazy, there is a quick and dirty way as well. Just run your python code as is,
+and when you get an <code class="docutils literal notranslate"><span class="pre">ImportError</span></code>, run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> for the missing Python package.</p>
 <p>Starting the development of your project on the cluster is not recommended, because
 you can easily forget to update <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> when adding dependencies.
 Porting the project to your own machine will then not have the correct dependencies.</p>
@@ -3568,7 +3581,7 @@ Intel 2020a compiler toolchain so we must load:</p>
 </div>
 </div>
 <div class="section" id="a-remark-on-the-order-of-things">
-<h4>6.2.7 a remark on the order of things<a class="headerlink" href="#a-remark-on-the-order-of-things" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.7 A remark on the order of things<a class="headerlink" href="#a-remark-on-the-order-of-things" title="Permalink to this headline">¶</a></h4>
 <p>The first step when starting a cluster session on a login-node should always be to
 load all modules you need, followed by activating the virtual environment of your
 project. It is easy to forget things, so we recommend to put a bash script in your
@@ -3583,8 +3596,10 @@ project directory that does this. E.g.:</p>
 <span class="n">source</span> <span class="o">.</span><span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
-<p>As the script must be sourced to activate the virtual environment, it is better
-not to make it executable, so you cannot forget to source it.</p>
+<p>As the script must be <code class="docutils literal notranslate"><span class="pre">source</span></code>-d (to expose the loaded modules in your shell,
+and to activate the virtual environment), it is better
+not to make it executable, so you cannot forget to source it. (To <code class="docutils literal notranslate"><span class="pre">source</span></code> a
+script, it must not be executable).</p>
 </div>
 </div>
 </div>
